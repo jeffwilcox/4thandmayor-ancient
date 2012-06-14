@@ -1,0 +1,265 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Lists.ListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <DataTemplate x:Key="ListItemDataTemplate">
+                <HyperlinkButton
+                MinHeight="60"
+                NavigateUri="{Binding LocalListItemUri}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                Style="{StaticResource NoHyperlink}">
+                    <Grid Margin="0,0,12,12" 
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid
+                            Margin="0,6,12,0"
+                            Background="{StaticResource PhoneChromeBrush}"
+                            Grid.RowSpan="4"
+                            Grid.Column="0"
+                            VerticalAlignment="Top"
+                            Width="110"
+                            Height="110"
+                            Visibility="{Binding Photo, Converter={StaticResource Vis}}">
+                            <Image
+                                Tag="fadeClear"
+                                jw:AwesomeImage.UriSource="{Binding Photo.LargerUri}"
+                                Stretch="Uniform"
+                                Width="110"
+                                Height="110"/>
+                        </Grid>
+                        <StackPanel Grid.Column="1" Grid.RowSpan="4">
+                            <TextBlock
+                                Visibility="{Binding Venue, Converter={StaticResource Vis}}"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0"
+                                Style="{StaticResource PhoneTextNormalStyle}"
+                                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                Text="{Binding Venue.Name}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                Style="{StaticResource PhoneTextNormalStyle}"
+                                Opacity=".75"
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Top"
+                                Text="{Binding Tip.Text}"
+                                Visibility="{Binding Tip.Text, Converter={StaticResource Vis}}"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                TextWrapping="Wrap" />
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Grid
+                                    VerticalAlignment="Top"
+                            Margin="0,6,0,0"
+                            Visibility="{Binding User, Converter={StaticResource Vis}}"
+                            Width="24" Height="24"
+                            Background="{StaticResource PhoneChromeBrush}">
+                                    <Image
+                                        Stretch="Uniform"
+                            jw:AwesomeImage.UriSource="{Binding User.Photo}"
+                            Tag="clear"
+                             />
+                                </Grid-->
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Top"
+                                                        Grid.Row="2"
+                                                        TextWrapping="Wrap"
+                                    Margin="0"
+                                Opacity=".75"
+                                                        Style="{StaticResource PhoneTextSmallStyle}"
+                                                        Text="{Binding Tip.AddedText}" />
+
+                            </Grid>
+                            
+                            <TextBlock
+                                Margin="0"
+                                Style="{StaticResource PhoneTextSmallStyle}"
+                                FontSize="10"
+                                Opacity=".75"
+                                Visibility="{Binding Venue.PrimaryCategory, Converter={StaticResource Vis}}"
+                                Text="{Binding Venue.PrimaryCategory.Name, Converter={StaticResource Cap}}"/>
+
+                            <!-- todo: check box like iOS has -->
+                            <!-- TBD: WHERE DOES THIS NUMBER COME FROM? 
+                                                    <TextBlock
+                                                        Grid.Row="3"
+                                                    Grid.Column="1"
+                                                        Style="{StaticResource PhoneTextSmallStyle}"
+                                                        Text="{Binding TBD}" />-->
+                        </StackPanel>
+                    </Grid>
+                </HyperlinkButton>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Name, Converter={StaticResource Cap}}" 
+                       TextWrapping="Wrap"
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
+            <!--
+            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            -->
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,12,0">
+            <jw:AwesomeScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Top"
+                          Margin="-12,0,0,12"
+                          Background="{StaticResource PhoneChromeBrush}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Height="12"
+                              Width="100"
+                              Visibility="{Binding Description, Converter={StaticResource Vis}}"/>
+                        <Grid
+                            Grid.Row="1"
+                            Margin="24,0,0,12"
+                            Grid.Column="1"
+                            Visibility="{Binding Photo, Converter={StaticResource Vis}}"
+                            VerticalAlignment="Top"
+                            Background="{StaticResource PhoneBackgroundBrush}">
+                            <Image
+                                Width="140"
+                                Height="140"
+                                Stretch="Uniform"
+                                jw:AwesomeImage.UriSource="{Binding Photo.LargerUri}"
+                                Tag="clear"
+                                />
+                        </Grid>
+                        <!--                             Margin="0,-6,0,0"-->
+                        <StackPanel
+                            Margin="12,0,24,0"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            VerticalAlignment="Top">
+                            <TextBlock
+                                Margin="12,-6,0,0"
+                                Style="{StaticResource PhoneTextNormalStyle}"
+                                TextWrapping="Wrap"
+                                Visibility="{Binding Description, Converter={StaticResource Vis}}"
+                                Text="{Binding Description}"/>
+                            <StackPanel
+                                Visibility="{Binding IsOwnList, Converter={StaticResource Vis}, ConverterParameter='!'}">
+                                <TextBlock
+                                    Margin="12,12,0,0"
+                                    Visibility="{Binding User, Converter={StaticResource Vis}}"
+                                    TextWrapping="Wrap"
+                                    Style="{StaticResource PhoneTextSmallStyle}"
+                                    FontSize="10"
+                                    Text="CREATED BY"/>
+                                <TextBlock
+                                    Margin="12,0,0,0"
+                                    Visibility="{Binding User, Converter={StaticResource Vis}}"
+                                    TextWrapping="Wrap"
+                                    Style="{StaticResource PhoneTextSmallStyle}"
+                                    Text="{Binding User, Converter={StaticResource Cap}}"/>
+                                <Button
+                                    Visibility="{Binding IsFollowing, Converter={StaticResource Vis}, ConverterParameter='!'}"
+                                    Click="OnButtonClick"
+                                    HorizontalAlignment="Left"
+                                    Tag="follow"
+                                    Content="Follow"/>
+                                <Button 
+                                    Content="Unfollow"
+                                    Tag="unfollow"
+                                    HorizontalAlignment="Left"
+                                    Click="OnButtonClick"
+                                    Visibility="{Binding IsFollowing, Converter={StaticResource Vis}}"
+                                    />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock
+                        Margin="24,6,0,6"
+                        TextWrapping="Wrap"
+                        Grid.Row="1"
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Text="{Binding VisitedPlacesString}"/>
+                    <jw:GroupingItemsControl
+                        Grid.Row="2"
+                        Margin="24,0,0,24"
+                        MinimumItemHeight="60"
+                        Empty="This list is empty."
+                        ItemsSource="{Binding ListItems}"
+                        IsFlatList="True"
+                        ItemTemplate="{StaticResource ListItemDataTemplate}"
+                        />
+                </Grid>
+            </jw:AwesomeScrollViewer>
+        </Grid>
+    </Grid>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>
