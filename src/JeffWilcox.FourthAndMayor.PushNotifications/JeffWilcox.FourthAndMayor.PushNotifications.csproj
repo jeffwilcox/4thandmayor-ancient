@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C38F43A-8A13-4DF7-B462-8236E5A0DE73}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JeffWilcox.FourthAndMayor.PushNotifications</RootNamespace>
+    <AssemblyName>JeffWilcox.FourthAndMayor.PushNotifications</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LiveTileStudioPage.xaml.cs">
+      <DependentUpon>LiveTileStudioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PushChannelSettings.cs" />
+    <Compile Include="PushNotifications.xaml.cs">
+      <DependentUpon>PushNotifications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PushNotificationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenameTile.xaml.cs">
+      <DependentUpon>RenameTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TileInformation.cs" />
+    <Compile Include="VenuePhotoPicker.xaml.cs">
+      <DependentUpon>VenuePhotoPicker.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\github\jeffwilcox\AgFx\AgFx\AgFx.csproj">
+      <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
+      <Name>AgFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\4th.Model\4th.Model.csproj">
+      <Project>{3DEC331E-8DCF-4644-B769-8878B04A3BBA}</Project>
+      <Name>4th.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JeffWilcox.FourthAndMayor.Place\JeffWilcox.FourthAndMayor.Place.csproj">
+      <Project>{2997493E-CE91-40CC-AD01-39371F1DA792}</Project>
+      <Name>JeffWilcox.FourthAndMayor.Place</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\github\jeffwilcox\4thandmayor\src\JeffWilcox.WebBrowser\JeffWilcox.WebBrowser.csproj">
+      <Project>{62957BBE-DE22-4DF3-B9C8-588B62D4342C}</Project>
+      <Name>JeffWilcox.WebBrowser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tk\Tk.csproj">
+      <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
+      <Name>Tk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="LiveTileStudioPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PushNotifications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RenameTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VenuePhotoPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

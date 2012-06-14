@@ -1,0 +1,343 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.PushNotifications.LiveTileStudioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <DataTemplate x:Key="TileDataTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                <!-- Tile -->
+                <Grid HorizontalAlignment="Left" Margin="0,0,24,12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Height="173"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Width="173"
+                          Margin="0,0,0,24"
+                          Background="{StaticResource PhoneAccentBrush}">
+                        <Image
+                            Stretch="UniformToFill"
+                            Width="173"
+                            Height="173"
+                            Source="{Binding BackgroundImage}"/>
+                        <TextBlock
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            Text="{Binding Title}"
+                            FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                            Foreground="White"
+                            HorizontalAlignment="Left"
+                            Margin="12,0,0,6"
+                            VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <TextBlock
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Text="{Binding UnderTitle}"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                </Grid>
+                    <!-- Editing functions -->
+                    <StackPanel Grid.Column="1"
+                          DataContext="{Binding}"
+                          VerticalAlignment="Top">
+                        
+                        <Button
+                            Click="OnButtonClick"
+                            Margin="0,0,0,16"
+                            Visibility="{Binding IsPinned, Converter={StaticResource Vis}, ConverterParameter='!'}"
+                            Tag="pin"
+                            Template="{StaticResource NoButton}">
+                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}"
+                                       Foreground="{StaticResource PhoneForegroundBrush}"
+                                       Text="pin tile"/>
+                        </Button>
+                        <Button
+                            Click="OnButtonClick"
+                            Margin="0,0,0,16"
+                            Visibility="{Binding IsPinned, Converter={StaticResource Vis}}"
+                            Tag="unpin"
+                            Template="{StaticResource NoButton}">
+                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}"
+                                       Foreground="{StaticResource PhoneForegroundBrush}"
+                                       Text="unpin tile"/>
+                        </Button>
+                        <Button
+                            Click="OnButtonClick"
+                            Margin="0,0,0,16"
+                            Tag="changeTitle"
+                            Visibility="{Binding CanChangeTitle, Converter={StaticResource Vis}}"
+                            Template="{StaticResource NoButton}">
+                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}"
+                                       Foreground="{StaticResource PhoneForegroundBrush}"
+                                       Text="change title"/>
+                        </Button>
+                        <Button
+                            Click="OnButtonClick"
+                            Margin="0,0,0,16"
+                            Tag="changePicture"
+                            Visibility="{Binding CanChangeBackgroundImage, Converter={StaticResource Vis}}"
+                            Template="{StaticResource NoButton}">
+                            <TextBlock Style="{StaticResource PhoneTextLargeStyle}"
+                                       Foreground="{StaticResource PhoneForegroundBrush}"
+                                       Text="change photo"/>
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="LIVE TILE STUDIO" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,0,0">
+            <jw:AwesomeScrollViewer Margin="12,0,0,0">
+            <StackPanel Margin="0,0,0,24">
+                <ContentControl
+                    HorizontalContentAlignment="Stretch"
+                    ContentTemplate="{StaticResource LightweightGroupHeaderDirectBindingSmaller}"
+                    Content="app tile"/>
+
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Horizontal">
+
+                    <!-- LIVE TILE -->
+                            <Button 
+                                Click="OnUpdateMainTile"
+                                Tag="default"
+                                Template="{StaticResource NoButton}">
+                                <Grid HorizontalAlignment="Left" Margin="0,0,24,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                                        <RowDefinition Height="12"/>
+                                    </Grid.RowDefinitions>
+                        <Grid Height="173"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Width="173"
+                          Margin="0,0,0,24"
+                          Background="{StaticResource PhoneAccentBrush}">
+                            <Image
+                            Stretch="None"
+                            Source="/CrownBackground2.png"/>
+                            <TextBlock
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            Text="4th &amp; Mayor"
+                            FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                            Foreground="White"
+                            HorizontalAlignment="Left"
+                            Margin="12,0,0,6"
+                            VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <TextBlock
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Text="LIVE TILE"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                                    <Rectangle
+                                        Visibility="{Binding SelectedMainIcon, Converter={StaticResource Vis}, ConverterParameter='!'}"
+                                        Fill="{StaticResource PhoneAccentBrush}"
+                                        Height="12"
+                                        Grid.Row="2"
+                                        Width="173"/>
+                    </Grid>
+</Button>
+
+                    <!-- STATIC TILE -->
+                            <Button 
+                                Click="OnUpdateMainTile"
+                                Tag="static"
+                                Template="{StaticResource NoButton}">
+                                <Grid HorizontalAlignment="Left" Margin="0,0,24,12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="12"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid Height="173"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Width="173"
+                          Margin="0,0,0,24"
+                          Background="{StaticResource PhoneAccentBrush}">
+                                        <Image
+                            Stretch="None"
+                            Source="/4thBackground_173.png"/>
+                                        <TextBlock
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            Text="4th &amp; Mayor"
+                            FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                            Foreground="White"
+                            HorizontalAlignment="Left"
+                            Margin="12,0,0,6"
+                            VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                    <TextBlock
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Text="STATIC"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                                    <Rectangle
+                                        Visibility="{Binding SelectedMainIcon, Converter={StaticResource EqVis}, ConverterParameter='static'}"
+                                        Fill="{StaticResource PhoneAccentBrush}"
+                                        Height="12"
+                                        Grid.Row="2"
+                                        Width="173"/>
+                                </Grid>
+                            </Button>
+
+                            <!-- CLASSIC TILE -->
+                            <Button 
+                                Click="OnUpdateMainTile"
+                                Tag="classic"
+                                Template="{StaticResource NoButton}">
+                                <Grid HorizontalAlignment="Left" Margin="0,0,24,12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="12"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid Height="173"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Width="173"
+                          Margin="0,0,0,24"
+                          Background="{StaticResource PhoneAccentBrush}">
+                                        <Image
+                            Stretch="None"
+                            Source="/ClassicTile.png"/>
+                                        <TextBlock
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            Text="4th &amp; Mayor"
+                            FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                            Foreground="White"
+                            HorizontalAlignment="Left"
+                            Margin="12,0,0,6"
+                            VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                    <TextBlock
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                        Text="CLASSIC"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
+                                    <Rectangle
+                                        Visibility="{Binding SelectedMainIcon, Converter={StaticResource EqVis}, ConverterParameter='classic'}"
+                                        Fill="{StaticResource PhoneAccentBrush}"
+                                        Height="12"
+                                        Grid.Row="2"
+                                        Width="173"/>
+                                </Grid>
+                            </Button>
+
+                        </StackPanel>
+                </ScrollViewer>
+
+                <ContentControl
+                    HorizontalContentAlignment="Stretch"
+                    ContentTemplate="{StaticResource LightweightGroupHeaderDirectBindingSmaller}"
+                    Content="quick app shortcuts"/>
+                    <ItemsControl
+                        ItemTemplate="{StaticResource TileDataTemplate}"
+                        ItemsSource="{Binding ShortcutTiles}"/>
+
+                    <ContentControl
+                        HorizontalContentAlignment="Stretch"
+                        ContentTemplate="{StaticResource LightweightGroupHeaderDirectBindingSmaller}"
+                        Content="push notifications"/>
+                    <HyperlinkButton
+                        NavigateUri="/JeffWilcox.FourthAndMayor.PushNotifications;component/PushNotifications.xaml"
+                        HorizontalAlignment="Left"
+                        Margin="-12,-12,0,12"
+                        Content="push settings &amp; status"
+                        Style="{StaticResource TallAccentHyperlink}"/>
+
+                    <ContentControl
+                    HorizontalContentAlignment="Stretch"
+                    ContentTemplate="{StaticResource LightweightGroupHeaderDirectBindingSmaller}"
+                    Content="place tiles"/>
+                    <ItemsControl
+                        ItemTemplate="{StaticResource TileDataTemplate}"
+                        ItemsSource="{Binding PlaceTiles}"/>
+                    <TextBlock
+                        Visibility="{Binding PlaceTiles, Converter={StaticResource Vis}, ConverterParameter='!'}"
+                        Margin="0"
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        TextWrapping="Wrap"
+                        Text="No places have been pinned to your start screen."/>
+
+                    <ContentControl
+                    HorizontalContentAlignment="Stretch"
+                    ContentTemplate="{StaticResource LightweightGroupHeaderDirectBindingSmaller}"
+                    Content="friend tiles"/>
+                    <ItemsControl
+                        ItemTemplate="{StaticResource TileDataTemplate}"
+                        ItemsSource="{Binding FriendTiles}"/>
+                    <TextBlock
+                        Visibility="{Binding FriendTiles, Converter={StaticResource Vis}, ConverterParameter='!'}"
+                        Margin="0"
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        TextWrapping="Wrap"
+                        Text="No friends have been pinned to your start screen."/>
+
+                </StackPanel>
+
+            </jw:AwesomeScrollViewer>
+        </Grid>
+    </Grid>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+</phone:PhoneApplicationPage>
