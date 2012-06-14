@@ -1,0 +1,1037 @@
+﻿<!--
+//
+// Copyright (c) 2010 Jeff Wilcox. All Rights Reserved.
+// 4th & Mayor <http://www.4thandmayor.com>
+//
+-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:layoutToolkit="clr-namespace:System.Windows.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls"
+    mc:Ignorable="d">
+
+    <DataTemplate x:Key="LoadingTextDataTemplate">
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   TextWrapping="Wrap"
+                   Style="{StaticResource PhoneTextLargeStyle}"
+                   Text="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LoadingTextSmallDataTemplate">
+        <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   TextWrapping="Wrap"
+                   Style="{StaticResource PhoneTextNormalStyle}"
+                   Text="{Binding}"/>
+    </DataTemplate>
+    
+    <Style TargetType="layoutToolkit:HeaderedContentControl">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="layoutToolkit:HeaderedContentControl">
+                    <StackPanel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            Cursor="{TemplateBinding Cursor}"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Cursor="{TemplateBinding Cursor}"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="jw:LiveTile">
+        <Setter Property="HeaderTextStyle" Value="{StaticResource PhoneTextSmallStyle}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:LiveTile">
+                    <Canvas
+                        Background="Transparent" 
+                        IsHitTestVisible="True">
+                        <Grid x:Name="_grid" CacheMode="BitmapCache">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.RenderTransform>
+                                <TranslateTransform/>
+                            </Grid.RenderTransform>
+                            <Image 
+                                Width="{TemplateBinding TileSize}"
+                                Height="{TemplateBinding TileSize}"
+                                x:Name="_image" 
+                                Grid.Row="1"
+                                Stretch="Uniform"/>
+                            <Grid 
+                                Grid.Row="0"
+                                CacheMode="BitmapCache"
+                                Width="{TemplateBinding TileSize}"
+                                Height="{TemplateBinding TileSize}"
+                                Background="{StaticResource PhoneAccentBrush}">
+                                <TextBlock Foreground="White"
+                                    Text="{TemplateBinding Header}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"
+                                    Margin="6,0,0,6"
+                                    Style="{TemplateBinding HeaderTextStyle}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    FontFamily="{TemplateBinding FontFamily}"/>
+                            </Grid>
+                        </Grid>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="jw:KenBurns">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:KenBurns">
+                    <Canvas>
+                        <VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="ImageStates">
+                                <vsm:VisualState x:Name="Loaded">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" Storyboard.TargetName="_image" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:01.5" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Image CacheMode="BitmapCache"
+                               x:Name="_image"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch"
+                               Stretch="UniformToFill"
+                               Opacity="0">
+                            <Image.RenderTransform>
+                                <TranslateTransform X="0" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="jw:WatermarkedTextBox" >
+        <Setter Property="WatermarkBrush" Value="{StaticResource PhoneTextBoxReadOnlyBrush}"/>
+        <Setter Property="Watermark" Value="enter text" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:WatermarkedTextBox">
+                    <Grid x:Name="Root">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="WatermarkStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="00:00:00.2" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" 
+                                                                       Storyboard.TargetName="_watermarkGrid" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <LinearDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Watermarked">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" 
+                                                                       Storyboard.TargetName="_watermarkGrid" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <LinearDoubleKeyFrame KeyTime="00:00:00" Value="0.9" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                    <VisualTransition To="Focused" GeneratedDuration="0:0:0.1" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Unfocused" />
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation To="0.0" 
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)" 
+                                                         Storyboard.TargetName="_watermark"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBox x:Name="_text" 
+                                 Text="{TemplateBinding Text}"
+                                 TextWrapping="{TemplateBinding TextWrapping}"
+                                 AcceptsReturn="True"
+                                 InputScope="{TemplateBinding InputScope}"
+                                 />
+                        <Grid x:Name="_watermarkGrid" Margin="6,6,0,0">
+                            <TextBlock
+                                Margin="{StaticResource PhoneTouchTargetOverhang}"
+                                Style="{StaticResource PhoneTextNormalStyle}"
+                                FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                                x:Name="_watermark" 
+                                IsHitTestVisible="False" 
+                                TextWrapping="Wrap"
+                                Foreground="{TemplateBinding WatermarkBrush}"
+                                Text="{TemplateBinding Watermark}" 
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Left" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:NotificationToast">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Padding" Value="12,24,12,24"/>
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:NotificationToast">
+                    <Grid Background="{TemplateBinding Background}"
+                          CacheMode="BitmapCache"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Stretch"
+                          toolkit:TiltEffect.IsTiltEnabled="True">
+                        <Button x:Name="_button">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Grid IsHitTestVisible="True" Background="Transparent">
+                            <StackPanel Margin="{TemplateBinding Padding}">
+                                <TextBlock 
+                                Style="{StaticResource PhoneTextLargeStyle}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                Text="{TemplateBinding Header}"
+                                />
+                                <!-- Hard-coded as accepting strings -->
+                                <ContentPresenter
+                                Margin="{StaticResource PhoneHorizontalMargin}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </StackPanel>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:MessageBoxWindow">
+        <Setter Property="LeftButtonText" Value="ok"/>
+        <Setter Property="RightButtonText" Value="cancel"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}"/>
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PhoneChromeBrush}"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:MessageBoxWindow">
+                    <Grid 
+                        CacheMode="BitmapCache"
+                        Background="{TemplateBinding Background}"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Stretch"
+                        toolkit:TiltEffect.IsTiltEnabled="True">
+                        <StackPanel Margin="12,12,12,18">
+                            <TextBlock 
+                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Text="{TemplateBinding Header}"
+                                FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                TextWrapping="Wrap"
+                                HorizontalAlignment="Left"/>
+                            <TextBlock 
+                                Style="{StaticResource PhoneTextNormalStyle}"
+                                Margin="12,24,12,24"
+                                Text="{TemplateBinding Content}"
+                                TextWrapping="Wrap"
+                                HorizontalAlignment="Left"/>
+                            <CheckBox 
+                                Content="{TemplateBinding CheckBoxContent}" 
+                                x:Name="_check"
+                                IsChecked="{TemplateBinding IsChecked}"
+                                Visibility="{TemplateBinding CheckBoxVisibility}"
+                                Margin="0,0,0,6"/>
+                            <Grid HorizontalAlignment="Stretch" Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button 
+                                    x:Name="_left"
+                                    Content="{TemplateBinding LeftButtonText}" 
+                                    Grid.Column="0"
+                                    Visibility="{TemplateBinding LeftButtonVisibility}"/>
+                                <Button 
+                                    x:Name="_right"
+                                    Content="{TemplateBinding RightButtonText}" 
+                                    Visibility="{TemplateBinding RightButtonVisibility}"
+                                    Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:OrientationFriendlyContent">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:OrientationFriendlyContent">
+                    <Grid x:Name="grid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter 
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Content="{TemplateBinding TopLeftContent}"/>
+                        <ContentPresenter
+                            VerticalAlignment="Top"
+                            x:Name="primary" 
+                            Grid.Row="1" 
+                            Grid.Column="1" 
+                            Content="{TemplateBinding BottomRightContent}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="jw:AwesomeScrollViewer">
+        <Setter Property="Margin" Value="0,0,-12,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:AwesomeScrollViewer">
+                    <Grid>
+                        <ContentPresenter VerticalAlignment="Top"
+                                          Visibility="Collapsed"
+                                          x:Name="Header"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"/>
+                        <ScrollViewer Content="{TemplateBinding Content}">
+                            <ScrollViewer.Template>
+                                <ControlTemplate TargetType="ScrollViewer">
+                                    <Grid Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                        <Grid.Triggers>
+                                            <EventTrigger RoutedEvent="Grid.Loaded">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Duration="00:00:01.5" From="1" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalScrollBar"/>
+                                                        <DoubleAnimation Duration="00:00:01.5" From="1" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="HorizontalScrollBar"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Grid.Triggers>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="ScrollStates">
+                                                <VisualStateGroup.Transitions>
+                                                    <VisualTransition GeneratedDuration="00:00:00.5"/>
+                                                </VisualStateGroup.Transitions>
+                                                <VisualState x:Name="Scrolling">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="VerticalScrollBar"/>
+                                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="HorizontalScrollBar"/>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="NotScrolling">
+                                                    <Storyboard>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <ScrollContentPresenter x:Name="ScrollContentPresenter" 
+                                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                            Content="{TemplateBinding Content}"/>
+                                        <ScrollBar 
+                                            x:Name="VerticalScrollBar" 
+                                            HorizontalAlignment="Right" 
+                                            Height="Auto" 
+                                            IsHitTestVisible="False" 
+                                            IsTabStop="False" 
+                                            Maximum="{TemplateBinding ScrollableHeight}" 
+                                            Minimum="0" 
+                                            Opacity="0" 
+                                            Orientation="Vertical" 
+                                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" 
+                                            Value="{TemplateBinding VerticalOffset}" 
+                                            ViewportSize="{TemplateBinding ViewportHeight}" 
+                                            VerticalAlignment="Stretch" 
+                                            Width="5"/>
+                                        <ScrollBar x:Name="HorizontalScrollBar" HorizontalAlignment="Stretch" Height="5" IsHitTestVisible="False" IsTabStop="False" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Opacity="0" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{TemplateBinding HorizontalOffset}" ViewportSize="{TemplateBinding ViewportWidth}" VerticalAlignment="Bottom" Width="Auto"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </ScrollViewer.Template>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:SmoothImage">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:SmoothImage">
+                    <Image
+                        x:Name="image"
+                        Opacity="0"
+                        Source="{TemplateBinding ActualImageSource}"
+                        Stretch="{TemplateBinding Stretch}">
+                        <VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="ImageStates">
+                                <vsm:VisualState x:Name="Loaded">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames  BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.4" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Image>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:StaticMap">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:StaticMap">
+                    <jw:SmoothImage Stretch="None" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:LoadingPivotItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="12,28,12,0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="LoadingText" Value="Loading..."/>
+        <Setter Property="Timeout" Value="0:0:15"/>
+        <Setter Property="FailureText" Value="The information could not be loaded. Please check your data connection or try again later."/>
+        <Setter Property="RetryText" Value="The information could not be loaded. Please check your data connection or try again now." />
+        <Setter Property="TimeoutText" Value="It's taking a long time to gather the information. Please check your data connection." />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="jw:LoadingPivotItem">
+                    <jw:LoadingContentControl
+                        LoadImmediately="False"
+                        x:Name="Content"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        CoverOffset="{TemplateBinding LoadingMargin}"
+                        LoadingContent="{TemplateBinding LoadingText}"
+                        FailureContent="{TemplateBinding FailureText}"
+                        RetryContent="{TemplateBinding RetryText}"
+                        TimeoutContent="{TemplateBinding TimeoutText}"
+                        Timeout="{TemplateBinding Timeout}"
+                        Content="{TemplateBinding Content}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:CoverContentControl">
+        <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="jw:CoverContentControl">
+                    <Grid
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Covering">
+                                <VisualState x:Name="Covered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="1"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Uncovered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0:0:0.5">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="0"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid
+                            CacheMode="BitmapCache"
+                            Visibility="Collapsed"
+                            x:Name="Content"/>
+                        <Grid x:Name="Cover"
+                              Background="{TemplateBinding Background}"
+                              Margin="{TemplateBinding CoverOffset}">
+                            <ContentPresenter Content="{TemplateBinding Cover}"
+                                              ContentTemplate="{TemplateBinding CoverTemplate}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:LoadingContentControl">
+        <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+        <Setter Property="ReleaseContentTree" Value="False"/>
+        <Setter Property="LoadingDisplayOffset" Value="0:0:0.10"/>
+        <Setter Property="LoadingContent" Value="Loading..." />
+        <Setter Property="LoadingContentTemplate" Value="{StaticResource LoadingTextDataTemplate}"/>
+        <Setter Property="FailureContent" Value="Failure!" />
+        <Setter Property="FailureContentTemplate" Value="{StaticResource LoadingTextDataTemplate}"/>
+        <Setter Property="RetryContent" Value="The information could not be loaded. Please check the data connection or try again later."/>
+        <Setter Property="RetryContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                                   TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="{Binding}"/>
+                        <jw:LoadingItemRetryButton 
+                            Foreground="{StaticResource PhoneAccentBrush}"
+                            FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                            FontSize="{StaticResource PhoneFontSizeLarge}"
+                            Grid.Row="1"
+                            Content="try again">
+                            <jw:LoadingItemRetryButton.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter 
+                                        Margin="12,0,12,0"
+                                        Content="{TemplateBinding Content}"/>
+                                </ControlTemplate>
+                            </jw:LoadingItemRetryButton.Template>
+                        </jw:LoadingItemRetryButton>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TimeoutContent" Value="It's taking a while to load this information. Perhaps you should try again later." />
+        <Setter Property="TimeoutContentTemplate" Value="{StaticResource LoadingTextSmallDataTemplate}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="jw:LoadingContentControl">
+                    <Grid
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Covering">
+                                <VisualState x:Name="Covered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="1"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Uncovered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0:0:0.5">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="0"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid
+                            CacheMode="BitmapCache"
+                            Visibility="Collapsed"
+                            x:Name="Content"/>
+                        <Grid x:Name="Cover"
+                              Background="{TemplateBinding Background}"
+                              Margin="{TemplateBinding CoverOffset}">
+                            <ContentPresenter Content="{TemplateBinding Cover}"
+                                              ContentTemplate="{TemplateBinding CoverTemplate}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:BaseCoverContentControl">
+        <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="jw:BaseCoverContentControl">
+                    <Grid
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Covering">
+                                <VisualState x:Name="Covered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Content">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0:0:0.5">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="1"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Uncovered">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Content">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetProperty="Visibility"
+                                            Storyboard.TargetName="Cover">
+                                            <DiscreteObjectKeyFrame
+                                                KeyTime="0:0:0.5">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation
+                                            BeginTime="0"
+                                            Duration="0:0:0.5"
+                                            To="0"
+                                            Storyboard.TargetName="Cover"
+                                            Storyboard.TargetProperty="Opacity"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid
+                            CacheMode="BitmapCache"
+                            Visibility="Collapsed"
+                            x:Name="Content">
+                            <ContentPresenter Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Grid>
+                        <Grid x:Name="Cover"
+                              Background="{TemplateBinding Background}"
+                              Margin="{TemplateBinding CoverOffset}">
+                            <ContentPresenter Content="{TemplateBinding Cover}"
+                                              ContentTemplate="{TemplateBinding CoverTemplate}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:GroupingItemsControl">
+        <Setter Property="Empty" Value="No items."/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:GroupingItemsControl">
+                    <StackPanel x:Name="stack">
+                        <ContentControl Content="{TemplateBinding Top}"
+                                        HorizontalAlignment="Left"/>
+                        <ContentControl Content="{TemplateBinding Empty}"
+                                        HorizontalAlignment="Left"
+                                        Visibility="{TemplateBinding IsEmpty}"
+                                        FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                        FontSize="{StaticResource PhoneFontSizeLarge}"
+                                        Foreground="{StaticResource PhoneForegroundBrush}"
+                                        />
+                        <!--                                         Margin="{StaticResource PhoneHorizontalMargin}" -->
+                        <ContentPresenter Content="{TemplateBinding Bottom}"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="layoutToolkit:TransitioningContentControl">
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="Transition" Value="UpTransition" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="layoutToolkit:TransitioningContentControl">
+                    <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="2">
+                        <vsm:VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="PresentationStates">
+                                <vsm:VisualState x:Name="DefaultTransition">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames 
+                      BeginTime="00:00:00" 
+                      Storyboard.TargetName="CurrentContentPresentationSite"
+                      Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames
+                      BeginTime="00:00:00" 
+                      Storyboard.TargetName="PreviousContentPresentationSite" 
+                      Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames 
+                      BeginTime="00:00:00" 
+                      Storyboard.TargetName="PreviousContentPresentationSite" 
+                      Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+
+                                <vsm:VisualState x:Name="UpTransition">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="CurrentContentPresentationSite" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="CurrentContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="30"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="-30"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+
+                                <vsm:VisualState x:Name="DownTransition">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="CurrentContentPresentationSite" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="CurrentContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-40"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" 
+                                                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PreviousContentPresentationSite" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="00:00:00.300" Value="40"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+
+                            </vsm:VisualStateGroup>
+                        </vsm:VisualStateManager.VisualStateGroups>
+
+                        <Grid>
+                            <ContentPresenter
+                x:Name="PreviousContentPresentationSite"
+                Content="{x:Null}"
+                                CacheMode="BitmapCache"
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+
+                            <ContentPresenter 
+                x:Name="CurrentContentPresentationSite"
+                Content="{x:Null}"
+                                CacheMode="BitmapCache"
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="jw:WilcoxTransitionFrame">
+        <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:WilcoxTransitionFrame">
+                    <Grid Margin="{TemplateBinding Margin}"
+                              x:Name="ClientArea"
+                              Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            x:Name="FirstContentPresenter"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter
+                            x:Name="SecondContentPresenter"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <Grid x:Name="OverlayGrid"/><!-- VerticalAlignment="Top" -->
+                        <Image x:Name="AnalyticsImage" VerticalAlignment="Top" Opacity="0"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="jw:Toolbar">
+        <Setter Property="TranslationDirection" Value="Down"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jw:Toolbar">
+                    <toolkitPrimitives:RelativeAnimatingContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <toolkitPrimitives:RelativeAnimatingContentControl.Resources>
+                            <QuarticEase EasingMode="EaseOut" x:Key="EaseOut"/>
+                            <QuarticEase EasingMode="EaseIn" x:Key="EaseIn"/>
+                        </toolkitPrimitives:RelativeAnimatingContentControl.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="OpenClosedStates">
+                                <VisualState x:Name="Open">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            Storyboard.TargetProperty="TranslateX"
+                                            EasingFunction="{StaticResource EaseIn}"
+                                            Duration="0:0:00.4"
+                                            To="0"/>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            Storyboard.TargetProperty="TranslateY"
+                                            EasingFunction="{StaticResource EaseIn}"
+                                            Duration="0:0:00.4"
+                                            To="0"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Up">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            EasingFunction="{StaticResource EaseOut}"
+                                            Storyboard.TargetProperty="TranslateY"
+                                            Duration="0:0:00.7"
+                                            To="-100.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Down">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            EasingFunction="{StaticResource EaseOut}"
+                                            Storyboard.TargetProperty="TranslateY"
+                                            Duration="0:0:00.7"
+                                            To="100.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Left">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            EasingFunction="{StaticResource EaseOut}"
+                                            Storyboard.TargetProperty="TranslateX"
+                                            Duration="0:0:00.7"
+                                            To="-100.1"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Right">
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="Transform"
+                                            EasingFunction="{StaticResource EaseOut}"
+                                            Storyboard.TargetProperty="TranslateX"
+                                            Duration="0:0:00.7"
+                                            To="100.1"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid CacheMode="BitmapCache">
+                            <Grid.RenderTransform>
+                                <CompositeTransform x:Name="Transform"/>
+                            </Grid.RenderTransform>
+                            <ContentPresenter/>
+                        </Grid>
+                    </toolkitPrimitives:RelativeAnimatingContentControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

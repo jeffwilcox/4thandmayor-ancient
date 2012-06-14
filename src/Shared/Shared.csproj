@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shared</RootNamespace>
+    <AssemblyName>Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;BUILDING_4TH_AND_MAYOR;MANGO</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Devices.Sensors" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Newtonsoft.Json.Silverlight">
+      <HintPath>..\Newtonsoft.Json.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="system" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analytics\AnalyticsSettings.cs" />
+    <Compile Include="Analytics\GoogleAnalytics.cs" />
+    <Compile Include="Analytics\IAnalyticsSettings.cs" />
+    <Compile Include="Analytics\IAnalyticsKey.cs" />
+    <Compile Include="CentralStatus\EllipsisStatusToken.cs" />
+    <Compile Include="CentralStatus\StatusToken.cs" />
+    <Compile Include="CentralStatus\TemporaryStatusToken.cs" />
+    <Compile Include="ChromeSystemTray.cs" />
+    <Compile Include="DesignerGrid.cs" />
+    <Compile Include="FrameExtensions.cs" />
+    <Compile Include="IAppPlatformVersion.cs" />
+    <Compile Include="IProvideLocalizedStrings.cs" />
+    <Compile Include="IsoStoreExtensions.cs" />
+    <Compile Include="Location\BingMapsHelper.cs" />
+    <Compile Include="Location\GeocodeViewModel.cs" />
+    <Compile Include="Location\GeoCoordinateExtensions.cs" />
+    <Compile Include="Net\IsoStoreCache.cs" />
+    <Compile Include="Platform\AppBarHelper.cs" />
+    <Compile Include="Images\AwesomeImage.cs" />
+    <Compile Include="Platform\AppBarIcon.cs" />
+    <Compile Include="Platform\ApplicationExtensions.cs" />
+    <Compile Include="Platform\MangoOnSeven.cs" />
+    <Compile Include="Platform\PhoneThemes.cs" />
+    <Compile Include="Push\IPushNotificationChannelName.cs" />
+    <Compile Include="Scrolling\AwesomeScrollViewer.cs" />
+    <Compile Include="Loading\BaseCoverContentControl.cs" />
+    <Compile Include="Loading\CoverContentControl.cs" />
+    <Compile Include="Platform\IntervalDispatcher.cs" />
+    <Compile Include="ThemeManager.cs" />
+    <Compile Include="Tombstoning\Epitaph.cs" />
+    <None Include="Location\Geocode.cs" />
+    <Compile Include="Location\GeocodeService.cs" />
+    <Compile Include="CentralStatus\CentralStatusManager.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Grouping\GroupingItemsControl.cs" />
+    <Compile Include="Loading\HeaderedContentControl.cs" />
+    <None Include="App\HybridOrientationChangesFrame.cs" />
+    <Compile Include="App\IAppInfo.cs" />
+    <Compile Include="App\IExposeRootFrame.cs" />
+    <Compile Include="IName.cs" />
+    <Compile Include="App\IProvideNavigationState.cs" />
+    <Compile Include="Loading\ISendLoadComplete.cs" />
+    <Compile Include="App\IShareDiagnosticInformation.cs" />
+    <Compile Include="Grouping\ISpecializedComparisonString.cs" />
+    <Compile Include="Loading\ISupportPauseResume.cs" />
+    <Compile Include="Net\IWebRequestFactory.cs" />
+    <Compile Include="Net\Json.cs" />
+    <Compile Include="KenBurns.cs" />
+    <Compile Include="Platform\LittleWatson.cs" />
+    <Compile Include="LiveTile.cs" />
+    <Compile Include="Loading\LoadingContentControl.cs" />
+    <Compile Include="Loading\LoadingItemRetryButton.cs" />
+    <None Include="Loading\LoadingPivotItemOld.cs" />
+    <None Include="Loading\LoadingPivotItemEx.cs" />
+    <Compile Include="Loading\LoadingPivotItem.cs" />
+    <Compile Include="Loading\LoadStatus.cs" />
+    <Compile Include="Location\Location.cs" />
+    <Compile Include="Location\LocationAssistant.cs" />
+    <Compile Include="Location\LocationCache.cs" />
+    <Compile Include="Location\LocationPair.cs" />
+    <Compile Include="Platform\MemoryDiagnosticsHelper.cs" />
+    <Compile Include="Images\PhotoExtenstions.cs" />
+    <Compile Include="MessageBoxWindow.cs" />
+    <Compile Include="MoreVisualTreeExtensions.cs" />
+    <Compile Include="Net\MyDownloadStringCompletedEventArgs.cs" />
+    <None Include="MyTiltEffect.cs" />
+    <Compile Include="Grouping\NamedGroup.cs" />
+    <Compile Include="Platform\NavigationExtensions.cs" />
+    <Compile Include="NotificationToast.cs" />
+    <Compile Include="OpacityAnimator.cs" />
+    <Compile Include="OrientationFriendlyContent.cs" />
+    <Compile Include="PhoneHyperlinkButton.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Platform\ScrollViewerExtensions.cs" />
+    <Compile Include="SettingsStorage.cs" />
+    <Compile Include="Images\SmoothImage.cs" />
+    <Compile Include="Location\StaticMap.cs" />
+    <Compile Include="Storage.cs" />
+    <Compile Include="Tombstoning\Tombstoning.cs" />
+    <Compile Include="Tombstoning\TombstoningStream.cs" />
+    <Compile Include="Tombstoning\TombstoningText.cs" />
+    <Compile Include="Toolbar.cs" />
+    <Compile Include="TransformAnimator.cs" />
+    <Compile Include="TransformYAnimator.cs" />
+    <Compile Include="TransitioningContentControl.cs" />
+    <Compile Include="Platform\UnixDate.cs" />
+    <Compile Include="Platform\VisualStates.cs" />
+    <Compile Include="Platform\VisualTreeExtensions.cs" />
+    <Compile Include="TranslationDirection.cs" />
+    <Compile Include="WatermarkTextBox.cs" />
+    <Compile Include="Net\WebRequestClient.cs" />
+    <Compile Include="Net\WebXamlBlock.cs" />
+    <Compile Include="WilcoxTransitionFrame.cs" />
+    <Compile Include="WindowBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\github\jeffwilcox\AgFx\AgFx\AgFx.csproj">
+      <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
+      <Name>AgFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\github\jeffwilcox\bourbon\src\Bourbon.GZipWebClient\Bourbon.GZipWebClient.csproj">
+      <Project>{C56C05D8-DA3A-4E4F-BBA4-9B5B0F93A034}</Project>
+      <Name>Bourbon.GZipWebClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\P\P.csproj">
+      <Project>{8D613483-B0A6-4E66-98A1-8B958C57CEAD}</Project>
+      <Name>P</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tk\Tk.csproj">
+      <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
+      <Name>Tk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
