@@ -1,0 +1,160 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.ProfileFriends"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=P"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:tilt="clr-namespace:JeffWilcox.FourthAndMayor;assembly=Shared"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent">
+        <controls:Pivot Title="{Binding FullName, Converter={StaticResource TempCap}, ConverterParameter='   '}"
+            x:Name="_pivot">
+            <jw:LoadingPivotItem Header="friends"
+                LoadingText="Refreshing the friends list">
+                <jw:AwesomeScrollViewer
+                    x:Name="ASV_FRIENDSLIST">
+                    <jw:GroupingItemsControl
+                        DataContext="{Binding FriendsList}"
+                        Empty="No 4sq friends."
+                        ItemsSource="{Binding Friends}"
+                        Margin="12,0,0,0"
+                        MinimumItemHeight="74"
+                        ItemTemplate="{StaticResource UserDataTemplate}"
+                        IsFlatList="True"/>
+                </jw:AwesomeScrollViewer>
+            </jw:LoadingPivotItem>
+            <jw:LoadingPivotItem Header="requests"
+                             x:Name="_userRequests"
+                             LoadingMargin="12,12,0,0"
+                             Margin="0,0,12,0"
+                             LoadingText="Looking for requests...">
+                <jw:AwesomeScrollViewer DataContext="{Binding FriendRequests.Requests}">
+                    <!-- added 24 pixels on top to space out -->
+                    <jw:GroupingItemsControl
+                    IsFlatList="True"
+                    Margin="0,24,24,0"
+                    ItemsSource="{Binding}">
+                        <jw:GroupingItemsControl.Empty>
+                            <TextBlock
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            TextWrapping="Wrap"
+                            Margin="24,0"
+                            Text="No pending friend requests."/>
+                        </jw:GroupingItemsControl.Empty>
+                        <jw:GroupingItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                toolkit:TiltEffect.TiltMe="True"
+                                MinHeight="90"
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,0,12">
+                                    <Grid Background="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="24"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <HyperlinkButton
+                    toolkit:TiltEffect.SuppressTilt="True"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    NavigateUri="{Binding UserUri}"
+                    Style="{StaticResource NoHyperlink}">
+                                            <Grid HorizontalAlignment="Stretch">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition
+                        Width="84" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Rectangle VerticalAlignment="Top"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="0,11,0,0"
+                                                   Fill="{StaticResource PhoneChromeBrush}"
+                                                   Width="72"
+                                                   Height="72"/>
+                                                <Image
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="0,11,0,0"
+                                            Width="72"
+                                            Height="72"
+                                        Grid.RowSpan="1"
+                        jw:AwesomeImage.UriSource="{Binding Photo}"
+                         />
+                                                <!-- Source="{Binding GenderPhoto}"-->
+
+                                                <StackPanel
+                                            HorizontalAlignment="Left"
+                    Grid.Column="1">
+                                                    <TextBlock
+                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Text="{Binding ShortName}"/>
+                                                    <TextBlock
+                                Text="{Binding HomeCity}"
+                                Opacity=".75"
+                                Margin="12,0,-9,0"
+                                Style="{StaticResource PhoneTextNormalStyle}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </HyperlinkButton>
+
+                                        <Grid
+                                        Margin="0,0,-48,0"
+                                        Background="Transparent"
+                                        IsHitTestVisible="True">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="12"/>
+                                                <ColumnDefinition Width="48"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Background="{StaticResource PhoneAccentBrush}" Visibility="Collapsed"/>
+                                            <Grid Background="Transparent" Visibility="Visible"/>
+                                            <Grid Background="Transparent" Grid.Column="1"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+
+                        </jw:GroupingItemsControl.ItemTemplate>
+                    </jw:GroupingItemsControl>
+                </jw:AwesomeScrollViewer>
+            </jw:LoadingPivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

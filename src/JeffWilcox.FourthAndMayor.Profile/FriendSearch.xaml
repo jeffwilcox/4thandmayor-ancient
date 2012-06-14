@@ -1,0 +1,109 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.FriendSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="FIND FOURSQUARE FRIENDS" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding PageTitle}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1"
+              x:Name="_topGrid"
+              Margin="12,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <jw:WatermarkedTextBox
+                x:Name="_search"
+                InputScope="{Binding Scope}"
+                Watermark="{Binding Watermark}"
+                            jw:Epitaph.TombstoneId="FriendSearch">
+                <jw:Epitaph.Tombstoner>
+                    <jw:Epitaph>
+                        <jw:TombstoneProperty PropertyName="Text" />
+                    </jw:Epitaph>
+                </jw:Epitaph.Tombstoner>
+            </jw:WatermarkedTextBox>
+            <Button
+                Grid.Column="1"
+                Margin="-12,0"
+                Click="Button_Click"
+                Content="search"/>
+
+            <Button
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Visibility="{Binding TaskType, Converter={StaticResource Vis}}"
+                Tag="{Binding TaskType}"
+                Click="Button_Click"
+                Template="{StaticResource NoButton}">
+                <TextBlock
+                    Margin="12"
+                    Style="{StaticResource PhoneTextNormalStyle}"
+                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                    Foreground="{StaticResource PhoneAccentBrush}"
+                    Text="Lookup in Address Book"/>
+            </Button>
+        </Grid>
+        
+        <!-- TODO: UX: Consider using a multi-select feature -->
+        <jw:AwesomeScrollViewer
+            Grid.Row="2"
+            Margin="24,12,0,0">
+            <jw:GroupingItemsControl
+                Empty="Nobody that is not yet a friend."
+                ItemsSource="{Binding UserSearch.NotYetFriends}"
+                ItemTemplate="{StaticResource UserDataTemplate}"
+                IsFlatList="True"/>
+        </jw:AwesomeScrollViewer>
+    </Grid>
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,146 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.FriendSearchStart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="4ᵀᴴ &amp; MAYOR" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="add friends" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <Grid Margin="12,0,12,0">
+            
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            
+                <TextBlock
+                    Style="{StaticResource PhoneTextNormalStyle}"
+                    Text="It's even more fun to play foursquare with a bunch of friends. Add more people that you would like to share with."
+                    TextWrapping="Wrap"/>
+
+                <HyperlinkButton
+                    x:Name="_mangoSearch"
+                    Margin="0,12,0,12"
+                    Style="{StaticResource NoHyperlink}"
+                    Grid.Row="1"
+                    HorizontalContentAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    NavigateUri="/JeffWilcox.FourthAndMayor.Profile;component/FriendSearch.xaml?by=mango">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="scan my phone's contacts"/>
+                </HyperlinkButton>
+
+                <HyperlinkButton
+                    Margin="0,12,0,12"
+                    Style="{StaticResource NoHyperlink}"
+                    Grid.Row="2"
+                    HorizontalContentAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    NavigateUri="/JeffWilcox.FourthAndMayor.Profile;component/FriendSearch.xaml?by=name">
+                    <TextBlock
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="find by name"/>
+                </HyperlinkButton>
+
+                <HyperlinkButton
+                    Style="{StaticResource NoHyperlink}"
+                    Grid.Row="3"
+                    Margin="0,12,0,12"
+                    HorizontalContentAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    NavigateUri="/JeffWilcox.FourthAndMayor.Profile;component/FriendSearch.xaml?by=phone">
+                    <TextBlock
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="find by phone number"/>
+                </HyperlinkButton>
+
+                <HyperlinkButton
+                    Style="{StaticResource NoHyperlink}"
+                    Grid.Row="4"
+                    Margin="0,12,0,12"
+                    HorizontalContentAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    NavigateUri="/JeffWilcox.FourthAndMayor.Profile;component/FriendSearch.xaml?by=email">
+                    <TextBlock
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="find by email address"/>
+                </HyperlinkButton>
+
+                <HyperlinkButton
+                    Style="{StaticResource NoHyperlink}"
+                    Grid.Row="5"
+                    Margin="0,12,0,12"
+                    HorizontalContentAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    NavigateUri="/JeffWilcox.FourthAndMayor.Profile;component/FriendSearch.xaml?by=twitter">
+                    <TextBlock
+                        Foreground="{StaticResource PhoneAccentBrush}"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="find Twitter friends"/>
+                </HyperlinkButton>
+
+                <TextBlock
+                    Margin="12"
+                    Grid.Row="6"
+                    Style="{StaticResource PhoneTextSmallStyle}"
+                    Text="To add Facebook friends, please use the foursquare.com web site."
+                    TextWrapping="Wrap"/>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+</phone:PhoneApplicationPage>

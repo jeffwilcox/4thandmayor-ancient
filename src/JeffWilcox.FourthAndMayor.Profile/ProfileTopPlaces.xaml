@@ -1,0 +1,58 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.ProfileTopPlaces"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=P"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent">
+        <controls:Pivot Title="{Binding FullName, Converter={StaticResource TempCap}, ConverterParameter='   '}"
+            x:Name="_pivot">
+            <jw:LoadingPivotItem Header="top places"
+                             Visibility="Collapsed"
+                             LoadingMargin="12,12,0,0"
+                             Margin="0,0,12,0"
+                             LoadingText="Updating top places...">
+                <jw:AwesomeScrollViewer
+                DataContext="{Binding VenueStatistics}">
+                    <jw:GroupingItemsControl
+                    Margin="24,24,24,0"
+                    MinimumItemHeight="60"
+                    Empty="No top places right now."
+                    IsFlatList="True"
+                    ItemsSource="{Binding FavoriteVenues}">
+                        <jw:GroupingItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <ContentControl
+                                        Grid.Row="0"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Stretch"
+                                        ContentTemplate="{StaticResource PlaceDataTemplate}"
+                                        Content="{Binding Venue}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </jw:GroupingItemsControl.ItemTemplate>
+                    </jw:GroupingItemsControl>
+                </jw:AwesomeScrollViewer>
+            </jw:LoadingPivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,95 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.ProfileMostExploredCategories"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=P"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent">
+        <controls:Pivot Title="{Binding FullName, Converter={StaticResource TempCap}, ConverterParameter='   '}"
+            x:Name="_pivot">
+            <jw:LoadingPivotItem Header="top categories"
+                             Visibility="Collapsed"
+                             LoadingMargin="12,12,0,0"
+                             Margin="0,0,12,0"
+                             LoadingText="Updating top categories...">
+                <jw:AwesomeScrollViewer
+                DataContext="{Binding VenueStatistics}">
+                    <jw:GroupingItemsControl
+                    Margin="24"
+                    MinimumItemHeight="60"
+                    Empty="No top categories right now."
+                    IsFlatList="True"
+                    ItemsSource="{Binding FavoriteCategories}">
+                        <jw:GroupingItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Stretch"
+                                    Template="{StaticResource NoButton}"
+                                    Tag="{Binding}"
+                                    Margin="0,0,0,12"
+                                    Click="Button_Click">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="68"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid
+                Margin="0,6,0,0"
+                Grid.RowSpan="2"
+                VerticalAlignment="Top">
+                                            <Image
+                    Width="64"
+                    Height="64"
+                    Source="/Images/unknown.png"
+                    Stretch="None"
+                    jw:AwesomeImage.UriSource="{Binding Category.MediumIconSize}" />
+                                            <Rectangle
+                    Width="64"
+                    Height="64"
+                    Stroke="#58595B"
+                    StrokeThickness="5" />
+                                            <Rectangle
+                    Width="56"
+                    Height="56"
+                    Stroke="#FFFFFF"
+                    StrokeThickness="3" />
+                                        </Grid>
+                                        <TextBlock
+                                        Style="{StaticResource PhoneTextLargeStyle}"
+                                        Text="{Binding Category.PluralName}"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Left"/>
+                                        <TextBlock
+                                        Style="{StaticResource PhoneTextSmallStyle}"
+                                        Text="{Binding VenueCountText}"
+                                        Grid.Row="1"
+                                        Grid.Column="1"/>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </jw:GroupingItemsControl.ItemTemplate>
+                    </jw:GroupingItemsControl>
+                </jw:AwesomeScrollViewer>
+            </jw:LoadingPivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>
