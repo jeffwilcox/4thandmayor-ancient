@@ -1,0 +1,133 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Place.VenueMenus"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" 
+    Orientation="Portrait"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=P"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:tilt="clr-namespace:JeffWilcox.FourthAndMayor;assembly=Shared"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding VenueName, Converter={StaticResource Cap}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="menu" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <jw:AwesomeScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition  />
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <HyperlinkButton HorizontalContentAlignment="Left"
+                                         HorizontalAlignment="Stretch"
+                                         TargetName="_new"
+                                         NavigateUri="{Binding AttributionLink}"
+                                         Style="{StaticResource NoHyperlink}">
+                            <StackPanel>
+                                <TextBlock
+                                    Text="MENU PROVIDED BY"
+                                    FontSize="14"
+                                    Style="{StaticResource PhoneTextSmallStyle}"/>
+                                <TextBlock
+                                    Text="{Binding Provider}"
+                                    Foreground="{StaticResource PhoneAccentBrush}"
+                                    Style="{StaticResource PhoneTextLargeStyle}"/>
+                            </StackPanel>
+                        </HyperlinkButton>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="4">
+                        <Image Source="{Binding AttributionImage}"
+                               HorizontalAlignment="Left"
+                               Margin="16,6,0,6"
+                               Stretch="None"
+                               Visibility="{Binding AttributionImage}"/>
+                        <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                                   Margin="12"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Top"
+                                   Text="{Binding AttributionText}"/>
+                    </StackPanel>
+                    <jw:GroupingItemsControl
+                        Grid.Row="2"
+                        MinimumItemHeight="40"
+                        IsFlatList="True"
+                        ItemsSource="{Binding Menus}">
+                        <jw:GroupingItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <HyperlinkButton
+                                    HorizontalAlignment="Left"
+                                    HorizontalContentAlignment="Stretch"
+                                    NavigateUri="{Binding LocalUri}"
+                                    Style="{StaticResource NoHyperlink}">
+                                    <TextBlock
+                                        TextWrapping="Wrap"
+                                        Foreground="{StaticResource PhoneAccentBrush}"
+                                        Style="{StaticResource PhoneTextLargeStyle}"
+                                        FontSize="{StaticResource PhoneFontSizeExtraLarge}"
+                                        Text="{Binding Name}"/>
+                                </HyperlinkButton>
+                            </DataTemplate>
+                        </jw:GroupingItemsControl.ItemTemplate>
+                    </jw:GroupingItemsControl>
+                </Grid>
+            </jw:AwesomeScrollViewer>
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

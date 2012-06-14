@@ -1,0 +1,109 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.AddToDo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid VerticalAlignment="Top"
+              Background="{StaticResource PhoneChromeBrush}"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="TitlePanel" 
+                    Grid.Row="0" Margin="12,17,0,28">
+                <TextBlock x:Name="ApplicationTitle" Text="ADD A TO-DO" Style="{StaticResource PhoneTextNormalStyle}"/>
+            </StackPanel>
+
+            <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"
+              VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource PhoneTextNormalStyle}"
+                       Grid.Row="0"
+                       Text="{Binding PlaceName}"/>
+                <TextBlock Style="{StaticResource PhoneTextSmallStyle}"
+                       Grid.Row="1"
+                       Text="{Binding Address}"/>
+                <Grid Grid.Row="3"
+                Margin="0,12,0,0"
+                
+                    x:Name="_grid"
+                    VerticalAlignment="Top"
+                    >
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                        <RowDefinition
+                        Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <jw:WatermarkedTextBox
+                    Grid.Row="1"
+                    MinHeight="120"
+                    InputScope="Text"
+                    TextWrapping="Wrap"
+                    x:Name="_shout"
+                    Watermark="optional reminder, &quot;enjoy the spicy tuna&quot;"
+                        jw:Epitaph.TombstoneId="AddToDo">
+                        <jw:Epitaph.Tombstoner>
+                            <jw:Epitaph>
+                                <jw:TombstoneProperty PropertyName="Text" />
+                            </jw:Epitaph>
+                        </jw:Epitaph.Tombstoner>
+                    </jw:WatermarkedTextBox>
+
+                    <TextBlock
+                    Style="{StaticResource PhoneTextNormalStyle}"
+                    Opacity=".8"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    x:Name="_count"
+                    Margin="0,0,18,18" />
+
+                    <Grid
+                    Grid.Row="3"
+                                        Grid.ColumnSpan="2"
+                    Background="{StaticResource PhoneChromeBrush}">
+
+                        <Button
+                            Click="OnButtonClick"
+                        x:Name="_send"
+                    Tag="AddToDo"
+                        Content="{Binding ButtonText}" />
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

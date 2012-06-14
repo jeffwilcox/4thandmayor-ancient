@@ -1,0 +1,148 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.VenueFriendsHere"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideDownFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Name, Converter={StaticResource Cap}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="people" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <jw:AwesomeScrollViewer
+                    Margin="0,0,-12,0"
+                    x:Name="ASV_PEOPLE">
+                <jw:GroupingItemsControl
+                            HeaderTemplate="{StaticResource LightweightGroupHeader}"
+                            MinimumItemHeight="70"
+                            Margin="12,0,12,0"
+                            Empty="Nobody is here now!"
+                            ItemsSource="{Binding HereNowGroups}">
+                    <jw:GroupingItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid MinHeight="70">
+                                <HyperlinkButton
+                                                        Visibility="{Binding User, Converter={StaticResource Vis}}"
+                    NavigateUri="{Binding UserUri}"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Stretch"
+                    Template="{StaticResource NoNoHyperlink}"
+                    >
+                                    <Grid
+                MinHeight="90"
+                                                            Background="Transparent"
+                                                            HorizontalAlignment="Stretch"
+                Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                        Width="60" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition
+                        Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Rectangle
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Left"
+                                                Width="60"
+                                                Height="60"
+                                                Margin="0,6,0,0"
+                                                Fill="{StaticResource PhoneChromeBrush}"/>
+                                        <Image
+                                                                VerticalAlignment="Top"
+                                                                HorizontalAlignment="Left"
+                    Margin="0,6,0,0"
+                        jw:AwesomeImage.UriSource="{Binding User.Photo}"
+                         />
+                                        <!-- Source="{Binding User.GenderPhoto}"-->
+                                        <StackPanel Grid.Column="1">
+                                            <StackPanel
+                                                                    HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+
+                                                <Image
+                            Height="30"
+                            Margin="12,1,-8,0"
+                            Width="30"
+                            Source="/Images/c30.png"
+                            Visibility="{Binding IsMayor, Converter={StaticResource Vis}}" />
+                                                <TextBlock
+                            Text="{Binding User}"
+                            Margin="12,0,-9,0"
+                            Style="{StaticResource PhoneTextLargeStyle}" />
+                                                <!-- before I had 
+              FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                                                    -->
+                                            </StackPanel>
+                                            <StackPanel
+                        Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="2">
+                                                <TextBlock
+                            Text="{Binding Created}"
+                            Opacity=".65"
+                            Style="{StaticResource PhoneTextSmallStyle}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </HyperlinkButton>
+
+                                <!-- Here now remainder item -->
+                                <Grid
+                                                            VerticalAlignment="Top"
+                                                            HorizontalAlignment="Left"
+                                                            Visibility="{Binding HereNowRemainderText, Converter={StaticResource Vis}}"
+                                                            >
+                                    <TextBlock
+                                                                Style="{StaticResource PhoneTextNormalStyle}"
+              FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                                                Text="{Binding HereNowRemainderText}"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </jw:GroupingItemsControl.ItemTemplate>
+                </jw:GroupingItemsControl>
+            </jw:AwesomeScrollViewer>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

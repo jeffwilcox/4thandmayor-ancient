@@ -1,0 +1,60 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Place.AddVenueDuplicates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="POSSIBLE PLACES" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <jw:AwesomeScrollViewer>
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        Text="The place that you are trying to add is pretty similar to some other existing places in the Foursquare database."
+                        TextWrapping="Wrap"/>
+                    <TextBlock
+                        Margin="12"
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        Text="Might you be looking for one of these places to check in to?"
+                        TextWrapping="Wrap"/>
+                    <ListBox
+                        Margin="12,0,-12,0"
+                        ItemsSource="{Binding CandidateDuplicateVenues}"
+                        ItemTemplate="{StaticResource PlaceDataTemplate}"/>
+                    <TextBlock
+                        Margin="12"
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        Text="Or if you are really sure this is something new, we can still add this to Foursquare's place database."
+                        TextWrapping="Wrap"/>
+                    <Button 
+                        HorizontalAlignment="Left"
+                        Click="Button_Click"
+                        Content="Add this place anyway"/>
+                </StackPanel>
+            </jw:AwesomeScrollViewer>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

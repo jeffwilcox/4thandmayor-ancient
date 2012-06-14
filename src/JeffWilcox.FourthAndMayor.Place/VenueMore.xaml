@@ -1,0 +1,129 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="JeffWilcox.FourthAndMayor.Views.VenueMore"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=P"
+    xmlns:jw="clr-namespace:JeffWilcox.Controls;assembly=Shared"
+    xmlns:tilt="clr-namespace:JeffWilcox.FourthAndMayor;assembly=Shared"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <controls:Pivot
+            Title="{Binding Name, Converter={StaticResource TempCap}, ConverterParameter='   '}"
+            x:Name="_pivot">
+
+        <jw:LoadingPivotItem Header="flag"
+            x:Name="_stuffPivotItem"
+            Visibility="Collapsed">
+            <ScrollViewer Margin="0,0,-12,0">
+                <!--                
+                TODO: Expand this MoRE tab.
+                Add as a favorite - future
+                Add to to-do list (optional text, too)
+                Moderate
+                -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource PhoneTextNormalStyle}"
+                        TextWrapping="Wrap"
+                        Text="Help keep the service useful to everyone. If you see a problem, notify the foursquare service here." />
+                    <Button
+                                                        Margin="0,12,0,0"
+                                                        Click="OnButtonClick"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Left"
+                                                        Tag="FlagVenueDuplicate"
+                                                        Template="{StaticResource NoButton}">
+                        <StackPanel>
+                            <TextBlock
+                                                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="flag as a duplicate" />
+                            <!--TextBlock
+                                TextWrapping="Wrap"
+                                                                Style="{StaticResource PhoneTextSmallStyle}"
+                                                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="Notify moderators that this place appears to be a duplicate of another place. They'll figure it out." 
+                            /-->
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                                                        Margin="0,12,0,0"
+                                                        Click="OnButtonClick"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Left"
+                                                        Tag="FlagVenueClosed"
+                                                        Template="{StaticResource NoButton}">
+                        <StackPanel>
+                            <TextBlock
+                                                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="flag as closed" />
+                            <!--TextBlock
+                                TextWrapping="Wrap"
+                                                                Style="{StaticResource PhoneTextSmallStyle}"
+                                                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="Notify moderators that this place has been closed or is out of business." 
+                            /-->
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                                                        Margin="0,12,0,0"
+                                                        Click="OnButtonClick"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Left"
+                                                        Tag="FlagVenueMislocated"
+                                                        Template="{StaticResource NoButton}">
+                        <StackPanel>
+                            <TextBlock
+                                                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="flag as mislocated" />
+                            <!--TextBlock
+                                TextWrapping="Wrap"
+                                                                Style="{StaticResource PhoneTextSmallStyle}"
+                                                                Foreground="{StaticResource PhoneAccentBrush}"
+                                                                Text="Notify moderators that this place does not have the proper location information." 
+                                /-->
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </jw:LoadingPivotItem>
+
+
+    </controls:Pivot>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>
