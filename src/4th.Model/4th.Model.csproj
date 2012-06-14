@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3DEC331E-8DCF-4644-B769-8878B04A3BBA}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JeffWilcox.FourthAndMayor.Model</RootNamespace>
+    <AssemblyName>4th.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Newtonsoft.Json.Silverlight">
+      <HintPath>..\Newtonsoft.Json.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppTileManager.cs" />
+    <Compile Include="AppTileSettings.cs" />
+    <Compile Include="Badge.cs" />
+    <Compile Include="BadgeGroup.cs" />
+    <Compile Include="BadgeNotification.cs" />
+    <Compile Include="Categories.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Checkin.cs" />
+    <Compile Include="CheckinRequest.cs" />
+    <Compile Include="CheckinResponse.cs" />
+    <Compile Include="Checkins.cs" />
+    <Compile Include="CheckinsGroup.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="CompactList.cs" />
+    <Compile Include="CompactListItem.cs" />
+    <Compile Include="CompactSpecial.cs" />
+    <Compile Include="CompactUser.cs" />
+    <Compile Include="CompactVenue.cs" />
+    <Compile Include="CompactVenueList.cs" />
+    <Compile Include="DetailedCheckin.cs" />
+    <Compile Include="DetailedTip.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="ExploreVenues.cs" />
+    <Compile Include="ExploreVenuesLoadContext.cs" />
+    <Compile Include="FourSquare.cs" />
+    <Compile Include="FourSquareDataLoaderBase.cs" />
+    <Compile Include="FourSquareItemBase.cs" />
+    <Compile Include="FourSquareLoadRequest.cs" />
+    <Compile Include="FourSquareServiceRequest.cs" />
+    <Compile Include="FourSquareWebClient.cs" />
+    <Compile Include="FriendRequests.cs" />
+    <Compile Include="FriendsList.cs" />
+    <Compile Include="FriendStatus.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="GeoMethodType.cs" />
+    <Compile Include="IExposeAppSettings.cs" />
+    <Compile Include="IFoursquareApiVersion.cs" />
+    <Compile Include="IGenerate4thAndMayorUri.cs" />
+    <Compile Include="IGenesis.cs" />
+    <Compile Include="ILocationEnabled.cs" />
+    <Compile Include="ImperialUnits.cs" />
+    <Compile Include="IProcessNotifications.cs" />
+    <Compile Include="ISetAuthenticationForThisAppInstance.cs" />
+    <Compile Include="ISignedOutThisInstance.cs" />
+    <Compile Include="ISignOutAndClear.cs" />
+    <Compile Include="Keyword.cs" />
+    <Compile Include="Leaderboard.cs" />
+    <Compile Include="LeaderboardItem.cs" />
+    <Compile Include="LeaderboardItemScores.cs" />
+    <Compile Include="LeaderboardLoadContext.cs" />
+    <Compile Include="LeaderboardNotification.cs" />
+    <Compile Include="LegacyWebClient.cs" />
+    <Compile Include="LegacyWebRequestClient.cs" />
+    <Compile Include="LimitingLoadContext.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="MayorAppBarIcon.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="MenuSection.cs" />
+    <Compile Include="QuitException.cs" />
+    <Compile Include="TipListedLists.cs" />
+    <Compile Include="ListLoadContext.cs" />
+    <Compile Include="ListsList.cs" />
+    <Compile Include="LocalCredentials.cs" />
+    <Compile Include="LocalCredentialsLoadRequest.cs" />
+    <Compile Include="MayorshipNotification.cs" />
+    <Compile Include="MessageNotification.cs" />
+    <Compile Include="MultiResolutionImage.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Notifications.cs" />
+    <Compile Include="Photo.cs" />
+    <Compile Include="PhotoAddLoadContext.cs" />
+    <Compile Include="PhotoAddResponse.cs" />
+    <Compile Include="PhotoGroup.cs" />
+    <Compile Include="PhotoProblem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadiusLoadContext.cs" />
+    <Compile Include="RecommendationReason.cs" />
+    <Compile Include="RecommendedCompactVenue.cs" />
+    <Compile Include="RecommendedCompactVenueList.cs" />
+    <Compile Include="RecommendedTipNotification.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="ScoreNotification.cs" />
+    <Compile Include="Special.cs" />
+    <Compile Include="SpecialGroup.cs" />
+    <Compile Include="SpecialLoadContext.cs" />
+    <Compile Include="SpecialNotification.cs" />
+    <Compile Include="SpecialsSearch.cs" />
+    <Compile Include="SpecialState.cs" />
+    <Compile Include="SpecialType.cs" />
+    <Compile Include="TargetObject.cs" />
+    <Compile Include="Tip.cs" />
+    <Compile Include="TipGroup.cs" />
+    <Compile Include="TipStatus.cs" />
+    <Compile Include="Todo.cs" />
+    <Compile Include="TrendingVenues.cs" />
+    <Compile Include="TrendingVenuesLoadContext.cs" />
+    <Compile Include="Update.cs" />
+    <Compile Include="Updates.cs" />
+    <Compile Include="UriWidthHeight.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserAndCategoryLoadContext.cs" />
+    <Compile Include="UserBadges.cs" />
+    <Compile Include="UserCategoryStatistic.cs" />
+    <Compile Include="UserCheckins.cs" />
+    <Compile Include="UserIntendedException.cs" />
+    <Compile Include="UserLists.cs" />
+    <Compile Include="UserMayorships.cs" />
+    <Compile Include="UserSearch.cs" />
+    <Compile Include="UserSearchLoadContext.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="UserTips.cs" />
+    <Compile Include="UserTodos.cs" />
+    <Compile Include="UserVenueHistory.cs" />
+    <Compile Include="UserVenueStatistic.cs" />
+    <Compile Include="UserVenueStats.cs" />
+    <Compile Include="Venue.cs" />
+    <Compile Include="VenueEvents.cs" />
+    <Compile Include="VenueMenu.cs" />
+    <Compile Include="Venues.cs" />
+    <Compile Include="VenueSearch.cs" />
+    <Compile Include="VenueSearchLoadContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\github\jeffwilcox\AgFx\AgFx\AgFx.csproj">
+      <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
+      <Name>AgFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
