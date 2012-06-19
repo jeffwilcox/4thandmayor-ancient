@@ -262,7 +262,7 @@ namespace Maps
                         }
                     }
                 }
-                else if (MangoOnSeven.IsMangoRunning)
+                else
                 {
                     try
                     {

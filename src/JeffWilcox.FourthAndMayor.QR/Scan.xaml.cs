@@ -67,17 +67,12 @@ namespace JeffWilcox.FourthAndMayor.QR
         }
         private void UpdateAppBars()
         {
-            if (MangoOnSeven.IsMangoRunning)
+            bool? wasPinned = _isPinned;
+            _isPinned = MangoOnSeven.IsPagePinned(NavigationService.Source);
+            if (wasPinned != _isPinned)
             {
-                bool? wasPinned = _isPinned;
-                _isPinned = MangoOnSeven.IsPagePinned(NavigationService.Source);
-                if (wasPinned != _isPinned)
-                {
-                    InitAppBars();
-                }
-            }
-
-            if (ApplicationBar == null)
+                InitAppBars();
+            } else if (ApplicationBar == null)
             {
                 InitAppBars();
             }

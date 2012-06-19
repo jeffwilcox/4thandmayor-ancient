@@ -27,19 +27,6 @@ namespace JeffWilcox.Controls
 {
     public static class MangoOnSeven
     {
-        public static bool IsMangoRunning
-        {
-            get
-            {
-#if MANGO
-                return true;
-#else
-                var vv = Environment.OSVersion.Version;
-                return vv.Major >= 7 && vv.Minor >= 10 && vv.Build >= 7710;
-#endif
-            }
-        }
-
         [Obsolete("OLD!")]
         public static bool TryBingMapsTask(GeoCoordinate coordinate, double zoomLevel)
         {
@@ -102,34 +89,6 @@ namespace JeffWilcox.Controls
 
                         return count == 0;
                     }
-                }
-            }
-
-            return false;
-        }
-
-        [Obsolete("OLD!")]
-        public static bool TryRemoveBackEntry()
-        {
-            if (IsMangoRunning)
-            {
-                try
-                {
-                    PhoneApplicationFrame frame = Application.Current.GetFrame();
-
-                    var frameType = typeof(PhoneApplicationFrame);
-                    var rbe = frameType.GetMethod("RemoveBackEntry");
-                    if (rbe != null)
-                    {
-                        var result = rbe.Invoke(frame, new object[] { });
-                        if (result != null)
-                        {
-                            return true;
-                        }
-                    }
-                }
-                catch
-                {
                 }
             }
 

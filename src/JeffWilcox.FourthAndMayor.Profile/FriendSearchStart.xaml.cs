@@ -25,15 +25,5 @@ namespace JeffWilcox.FourthAndMayor.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            if (!MangoOnSeven.IsMangoRunning)
-            {
-                _mangoSearch.Visibility = System.Windows.Visibility.Collapsed;
-            }
-
-            base.OnNavigatedTo(e);
-        }
     }
 }
