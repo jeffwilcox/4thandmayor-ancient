@@ -176,7 +176,7 @@
     <Compile Include="VenueSearchLoadContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\github\jeffwilcox\AgFx\AgFx\AgFx.csproj">
+    <ProjectReference Include="..\..\..\AgFx\AgFx\AgFx.csproj">
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>
     </ProjectReference>

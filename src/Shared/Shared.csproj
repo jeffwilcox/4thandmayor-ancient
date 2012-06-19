@@ -149,15 +149,15 @@
     <Compile Include="WindowBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\github\jeffwilcox\AgFx\AgFx\AgFx.csproj">
+    <ProjectReference Include="..\..\..\AgFx\AgFx\AgFx.csproj">
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\github\jeffwilcox\bourbon\src\Bourbon.GZipWebClient\Bourbon.GZipWebClient.csproj">
+    <ProjectReference Include="..\..\..\bourbon\src\Bourbon.GZipWebClient\Bourbon.GZipWebClient.csproj">
       <Project>{C56C05D8-DA3A-4E4F-BBA4-9B5B0F93A034}</Project>
       <Name>Bourbon.GZipWebClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\P\P.csproj">
+    <ProjectReference Include="..\..\..\..\..\fspp\P\P.csproj">
       <Project>{8D613483-B0A6-4E66-98A1-8B958C57CEAD}</Project>
       <Name>P</Name>
     </ProjectReference>

@@ -62,15 +62,15 @@
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\4th.Model\4th.Model.csproj">
+    <ProjectReference Include="..\4th.Model\4th.Model.csproj">
       <Project>{3DEC331E-8DCF-4644-B769-8878B04A3BBA}</Project>
       <Name>4th.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\Shared\Shared.csproj">
+    <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
       <Name>Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\Tk\Tk.csproj">
+    <ProjectReference Include="..\Tk\Tk.csproj">
       <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
       <Name>Tk</Name>
     </ProjectReference>

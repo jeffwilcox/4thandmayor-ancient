@@ -65,7 +65,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\P\P.csproj">
+    <ProjectReference Include="..\..\..\..\..\fspp\P\P.csproj">
       <Project>{8D613483-B0A6-4E66-98A1-8B958C57CEAD}</Project>
       <Name>P</Name>
     </ProjectReference>

@@ -66,7 +66,7 @@
       <Project>{F47A8668-B209-4215-936C-5EDFED289F26}</Project>
       <Name>JeffWilcox.Controls.QR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\4th.Model\4th.Model.csproj">
+    <ProjectReference Include="..\4th.Model\4th.Model.csproj">
       <Project>{3DEC331E-8DCF-4644-B769-8878B04A3BBA}</Project>
       <Name>4th.Model</Name>
     </ProjectReference>
@@ -74,11 +74,11 @@
       <Project>{8D613483-B0A6-4E66-98A1-8B958C57CEAD}</Project>
       <Name>P</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\Shared\Shared.csproj">
+    <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
       <Name>Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\fspp\Tk\Tk.csproj">
+    <ProjectReference Include="..\Tk\Tk.csproj">
       <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
       <Name>Tk</Name>
     </ProjectReference>
