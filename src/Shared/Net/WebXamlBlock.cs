@@ -15,13 +15,13 @@
 //
 
 using System;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
 using AgFx;
 using JeffWilcox.FourthAndMayor;
-using System.Net;
 
 namespace JeffWilcox.Controls
 {

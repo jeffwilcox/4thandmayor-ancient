@@ -16,11 +16,11 @@
 
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using AgFx;
 using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Globalization;
 
 namespace JeffWilcox.FourthAndMayor.Lists
 {

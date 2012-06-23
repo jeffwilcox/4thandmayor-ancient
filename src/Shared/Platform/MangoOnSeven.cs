@@ -15,13 +15,12 @@
 //
 
 using System;
+using System.Collections;
 using System.Device.Location;
 using System.Reflection;
-using Microsoft.Phone.Shell;
-using Microsoft.Phone.Controls;
-using System.Collections;
-using System.Linq;
 using System.Windows;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.Controls
 {

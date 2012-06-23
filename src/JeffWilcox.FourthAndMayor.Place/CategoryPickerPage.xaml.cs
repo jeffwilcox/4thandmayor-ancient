@@ -15,21 +15,13 @@
 //
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using AgFx;
-using JeffWilcox.FourthAndMayor.Model;
 using JeffWilcox.Controls;
+using JeffWilcox.FourthAndMayor.Model;
 using Microsoft.Phone.Controls;
-using System.Globalization;
 
 namespace JeffWilcox.FourthAndMayor.Views
 {

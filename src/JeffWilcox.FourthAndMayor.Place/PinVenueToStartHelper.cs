@@ -16,12 +16,11 @@
 
 using System;
 using System.Diagnostics;
-using System.Windows;
 using System.Linq;
+using System.Windows;
+using AgFx;
 using JeffWilcox.Controls;
 using Microsoft.Phone.Shell;
-using AgFx;
-using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor
 {

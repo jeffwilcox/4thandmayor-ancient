@@ -18,13 +18,13 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Resources;
 using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using JeffWilcox.FourthAndMayor;
 using JeffWilcox.Controls;
+using JeffWilcox.FourthAndMayor;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
-using System.Windows.Controls.Primitives;
 
 namespace About
 {

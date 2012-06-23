@@ -14,9 +14,7 @@
 // limitations under the License.
 //
 
-using System;
 using Newtonsoft.Json.Linq;
-using System.Windows.Media;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

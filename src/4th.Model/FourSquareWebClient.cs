@@ -25,7 +25,6 @@ namespace JeffWilcox.FourthAndMayor
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Text;
-    using AgFx;
     using System.Windows;
     using JeffWilcox.Controls;
 

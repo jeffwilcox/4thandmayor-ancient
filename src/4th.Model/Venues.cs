@@ -18,10 +18,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using AgFx;
-using Newtonsoft.Json.Linq;
-using JeffWilcox.Controls;
 using System.Windows;
+using AgFx;
+using JeffWilcox.Controls;
+using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

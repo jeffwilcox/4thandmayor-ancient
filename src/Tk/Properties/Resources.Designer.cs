@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Phone.Controls.Toolkit.Properties {
-    using System;
-    
-    
+namespace Microsoft.Phone.Controls.Toolkit.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

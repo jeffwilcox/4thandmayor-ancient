@@ -21,7 +21,6 @@ using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
-using System.Globalization;
 
 namespace JeffWilcox.FourthAndMayor.QR
 {

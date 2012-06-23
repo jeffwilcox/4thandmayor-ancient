@@ -14,7 +14,6 @@
 // limitations under the License.
 //
 
-using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Views

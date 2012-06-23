@@ -15,16 +15,13 @@
 //
 
 using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Windows;
 using AgFx;
 using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
-    using Controls;
     using System.Collections.Generic;
+    using Controls;
 
     public class Event : NotifyPropertyChangedBase, ISpecializedComparisonString
     {

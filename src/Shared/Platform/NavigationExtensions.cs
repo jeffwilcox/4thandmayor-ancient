@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
+using System;
 using System.Windows.Navigation;
 using AgFx;
-using System;
 
 namespace JeffWilcox.Controls
 {

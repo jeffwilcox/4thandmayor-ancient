@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
+using System;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
-using System;
 
 namespace JeffWilcox
 {

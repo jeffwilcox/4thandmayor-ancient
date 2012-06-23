@@ -14,14 +14,10 @@
 // limitations under the License.
 //
 
-using System;
-using System.Diagnostics;
-using System.IO;
 using System.Net;
 
 namespace JeffWilcox.FourthAndMayor
 {
-    using System.Text;
 
     public class WebRequestClient
     {

@@ -15,13 +15,11 @@
 //
 
 using System;
-using System.Diagnostics;
-using Newtonsoft.Json.Linq;
-using System.Linq;
 using System.Collections.Generic;
-using JeffWilcox.Controls;
+using System.Linq;
 using System.Text;
-using System.Windows.Media;
+using JeffWilcox.Controls;
+using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

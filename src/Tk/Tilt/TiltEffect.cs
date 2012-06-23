@@ -4,18 +4,17 @@
 // All other rights reserved.
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Collections.Generic;
-using System.Windows.Controls.Primitives;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 #if WINDOWS_PHONE
-using Microsoft.Phone.Controls;
+
 #endif
 
 namespace Microsoft.Phone.Controls

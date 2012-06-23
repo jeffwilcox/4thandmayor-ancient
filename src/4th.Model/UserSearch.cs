@@ -15,8 +15,8 @@
 //
 
 using System;
-using AgFx;
 using System.Collections.Generic;
+using AgFx;
 using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model

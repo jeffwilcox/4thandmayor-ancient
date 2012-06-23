@@ -20,7 +20,6 @@ using AgFx;
 namespace JeffWilcox.FourthAndMayor.Model
 {
     using Controls;
-    using System.Diagnostics;
 
     public abstract class FourSquareItemBase<T> : 
         ModelItemBase<T>, 

@@ -5,7 +5,7 @@
 
 using System;
 using System.Windows;
-using Microsoft.Phone.Controls.Toolkit;
+
 
 #if WINDOWS_PHONE
 namespace Microsoft.Phone.Controls

@@ -14,8 +14,6 @@
 // limitations under the License.
 //
 
-using System;
-using System.Globalization;
 using JeffWilcox.Controls;
 using Newtonsoft.Json.Linq;
 

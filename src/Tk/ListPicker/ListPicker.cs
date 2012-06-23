@@ -16,7 +16,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Microsoft.Phone.Shell;
-using Microsoft.Phone.Controls.Toolkit;
 
 namespace Microsoft.Phone.Controls
 {

@@ -16,11 +16,11 @@
 
 using System;
 using System.Collections.Generic;
-using AgFx;
-using Newtonsoft.Json.Linq;
 using System.Globalization;
-using JeffWilcox.Controls;
 using System.Windows;
+using AgFx;
+using JeffWilcox.Controls;
+using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

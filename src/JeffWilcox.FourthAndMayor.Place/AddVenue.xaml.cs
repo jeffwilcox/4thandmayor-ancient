@@ -16,11 +16,11 @@
 
 using System;
 using System.Collections.Generic;
-using JeffWilcox.Controls;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using AgFx;
+using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Views

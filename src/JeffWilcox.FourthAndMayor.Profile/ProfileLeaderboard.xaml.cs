@@ -14,12 +14,12 @@
 // limitations under the License.
 //
 
+using System;
 using System.Windows.Navigation;
 using AgFx;
+using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using JeffWilcox.Controls;
-using System;
 
 namespace JeffWilcox.FourthAndMayor.Views
 {

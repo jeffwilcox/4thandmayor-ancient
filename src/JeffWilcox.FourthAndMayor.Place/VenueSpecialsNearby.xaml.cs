@@ -15,9 +15,9 @@
 //
 
 using System;
-using Microsoft.Phone.Controls;
-using AgFx;
 using System.Windows.Navigation;
+using AgFx;
+using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Views
 {

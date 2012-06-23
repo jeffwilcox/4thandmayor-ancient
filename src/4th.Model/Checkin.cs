@@ -23,8 +23,8 @@ using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
-    using Controls;
     using System.Collections.Generic;
+    using Controls;
 
     public class Checkin : NotifyPropertyChangedBase, ISpecializedComparisonString
     {

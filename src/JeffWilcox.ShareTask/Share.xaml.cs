@@ -14,12 +14,12 @@
 // limitations under the License.
 //
 
+using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Phone.Controls;
-using System.Globalization;
-using System;
 using JeffWilcox.Controls;
+using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.ShareTask
 {

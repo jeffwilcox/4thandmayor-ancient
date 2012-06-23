@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Phone.Controls;
-using System;
 
 namespace JeffWilcox.Controls
 {

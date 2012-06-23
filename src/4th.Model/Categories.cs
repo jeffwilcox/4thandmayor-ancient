@@ -16,12 +16,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.IO;
 using AgFx;
 using Newtonsoft.Json.Linq;
-using JeffWilcox.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

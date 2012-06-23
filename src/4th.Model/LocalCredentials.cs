@@ -17,8 +17,8 @@
 using System;
 using System.IO;
 using System.Threading;
-using AgFx;
 using System.Windows;
+using AgFx;
 using JeffWilcox.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Model

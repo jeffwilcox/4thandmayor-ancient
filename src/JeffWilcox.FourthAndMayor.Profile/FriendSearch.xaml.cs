@@ -14,18 +14,17 @@
 // limitations under the License.
 //
 
-using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using AgFx;
 using JeffWilcox.FourthAndMayor.Model;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
-using System.Windows.Controls;
 using Microsoft.Phone.UserData;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JeffWilcox.FourthAndMayor.Views
 {

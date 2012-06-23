@@ -22,16 +22,15 @@
 // Analytics service, mostly just around navigation events.
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using AgFx;
 using JeffWilcox.Controls;
-using System.Collections.Generic;
-using System.Windows.Media.Imaging;
-using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor
 {

@@ -16,7 +16,6 @@
 
 using System;
 using System.Globalization;
-using System.Net;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

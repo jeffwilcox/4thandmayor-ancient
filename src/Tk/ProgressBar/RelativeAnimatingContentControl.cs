@@ -8,11 +8,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Diagnostics.CodeAnalysis;
 
 // This is a very special primitive control that works around a limitation in
 // the core animation subsystem of Silverlight: there is no way to declare in

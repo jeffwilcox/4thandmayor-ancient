@@ -23,8 +23,8 @@ using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
-    using Controls;
     using System.Windows;
+    using Controls;
 
     public abstract class FourSquareDataLoaderBase<T> : 
         DataLoaderBase<T> 

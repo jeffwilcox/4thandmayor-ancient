@@ -16,10 +16,10 @@
 
 using System;
 using System.Windows;
-using Microsoft.Phone.Controls;
-using AgFx;
 using System.Windows.Controls.Primitives;
+using AgFx;
 using JeffWilcox.Controls;
+using Microsoft.Phone.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Views
 {

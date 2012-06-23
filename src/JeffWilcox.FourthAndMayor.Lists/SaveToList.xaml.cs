@@ -16,15 +16,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using AgFx;
-using System.Linq;
 using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Windows.Controls.Primitives;
-using System.Windows.Controls;
-using System.ComponentModel;
 
 namespace JeffWilcox.FourthAndMayor.Lists
 {

@@ -15,8 +15,8 @@
 //
 
 using System;
-using Microsoft.Phone.Shell;
 using JeffWilcox.Controls;
+using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.PushNotifications
 {

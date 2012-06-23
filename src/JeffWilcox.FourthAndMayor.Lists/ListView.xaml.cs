@@ -15,11 +15,11 @@
 //
 
 using System;
+using System.Windows.Controls.Primitives;
 using AgFx;
+using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using JeffWilcox.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace JeffWilcox.FourthAndMayor.Lists
 {

@@ -16,9 +16,8 @@
 
 using System;
 using System.Globalization;
-using JeffWilcox.FourthAndMayor.Model;
-using JeffWilcox.Controls;
 using System.Windows;
+using JeffWilcox.Controls;
 
 namespace JeffWilcox.FourthAndMayor
 {

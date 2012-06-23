@@ -17,7 +17,6 @@
 using System;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
-using System.Windows;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {

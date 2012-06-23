@@ -22,13 +22,12 @@ using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net;
-using System.Windows;
-using System.Windows.Media;
-using JeffWilcox.Controls;
-using Microsoft.Phone.Notification;
-using Microsoft.Phone.Info;
-using Microsoft.Phone.Shell;
 using System.Text;
+using System.Windows;
+using JeffWilcox.Controls;
+using Microsoft.Phone.Info;
+using Microsoft.Phone.Notification;
+using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor
 {

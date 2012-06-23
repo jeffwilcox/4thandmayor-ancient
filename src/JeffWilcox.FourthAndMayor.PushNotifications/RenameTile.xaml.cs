@@ -15,12 +15,11 @@
 //
 
 using System;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using JeffWilcox.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Windows.Threading;
 
 namespace JeffWilcox.FourthAndMayor.PushNotifications
 {

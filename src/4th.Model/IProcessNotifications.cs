@@ -14,11 +14,6 @@
 // limitations under the License.
 //
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JeffWilcox.FourthAndMayor.Model;
 using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.Controls

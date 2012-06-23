@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.Phone.Controls.Toolkit;
+
 
 #if WINDOWS_PHONE
 namespace Microsoft.Phone.Controls

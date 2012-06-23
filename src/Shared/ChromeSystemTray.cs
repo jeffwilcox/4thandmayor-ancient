@@ -15,8 +15,8 @@
 //
 
 using System.Windows;
-using Microsoft.Phone.Shell;
 using System.Windows.Media;
+using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.Controls
 {

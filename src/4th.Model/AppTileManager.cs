@@ -21,8 +21,8 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Windows;
-using Microsoft.Phone.Shell;
 using AgFx;
+using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.Controls
 {

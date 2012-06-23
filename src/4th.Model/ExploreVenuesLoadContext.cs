@@ -15,7 +15,6 @@
 //
 
 using System.Globalization;
-using AgFx;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
