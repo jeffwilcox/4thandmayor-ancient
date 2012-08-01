@@ -18,6 +18,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 {
     public enum Gender
     {
+        None,
         Male,
         Female,
     }
