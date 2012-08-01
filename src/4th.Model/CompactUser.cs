@@ -90,14 +90,28 @@ namespace JeffWilcox.FourthAndMayor.Model
 
             bu.HomeCity = Json.TryGetJsonProperty(user, "homeCity");
 
-            string uri = Json.TryGetJsonProperty(user, "photo");
-            if (uri != null)
+            var photo = user["photo"];
+            if (photo != null)
             {
-                // NEW: Removing the blank boy and girl pics for perf reasons.
-                // FUTURE: GIF SUPPORT?
-                if (!uri.Contains(".gif") && !uri.Contains("blank"))
+                // 4.0
+                var prefix = Json.TryGetJsonProperty(photo, "prefix");
+                var suffix = Json.TryGetJsonProperty(photo, "suffix");
+                string uri = null;
+                if (prefix != null && suffix != null)
                 {
-                    bu.Photo = new Uri(uri);
+                    uri = prefix + suffix;
+                }
+                else
+                {
+                    uri = Json.TryGetJsonProperty(user, "photo");
+                }
+
+                if (uri != null)
+                {
+                    if (!uri.Contains(".gif"))
+                    {
+                        bu.Photo = new Uri(uri);
+                    }
                 }
             }
 

@@ -45,14 +45,8 @@
                     <jw:GroupingItemsControl
                     IsFlatList="True"
                     Margin="0,24,24,0"
-                    ItemsSource="{Binding}">
-                        <jw:GroupingItemsControl.Empty>
-                            <TextBlock
-                            Style="{StaticResource PhoneTextLargeStyle}"
-                            TextWrapping="Wrap"
-                            Margin="24,0"
-                            Text="No pending friend requests."/>
-                        </jw:GroupingItemsControl.Empty>
+                    ItemsSource="{Binding}"
+                        Empty="No pending friend requests.">
                         <jw:GroupingItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid

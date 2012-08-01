@@ -768,13 +768,15 @@
                     <StackPanel x:Name="stack">
                         <ContentControl Content="{TemplateBinding Top}"
                                         HorizontalAlignment="Left"/>
-                        <ContentControl Content="{TemplateBinding Empty}"
-                                        HorizontalAlignment="Left"
-                                        Visibility="{TemplateBinding IsEmpty}"
-                                        FontFamily="{StaticResource PhoneFontFamilySemiLight}"
-                                        FontSize="{StaticResource PhoneFontSizeLarge}"
-                                        Foreground="{StaticResource PhoneForegroundBrush}"
-                                        />
+                        <TextBlock Text="{TemplateBinding Empty}"
+                                   TextWrapping="Wrap"
+                                   Margin="0"
+                                   HorizontalAlignment="Left"
+                                   Visibility="{TemplateBinding IsEmpty}"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                   FontSize="{StaticResource PhoneFontSizeLarge}"
+                                   Foreground="{StaticResource PhoneForegroundBrush}"
+                                   />
                         <!--                                         Margin="{StaticResource PhoneHorizontalMargin}" -->
                         <ContentPresenter Content="{TemplateBinding Bottom}"/>
                     </StackPanel>

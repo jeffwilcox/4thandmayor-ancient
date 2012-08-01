@@ -703,12 +703,28 @@ namespace JeffWilcox.FourthAndMayor.Model
                         ),
                         UriKind.Relative);
 
-                    string uri = Json.TryGetJsonProperty(user, "photo");
-                    if (uri != null)
+                    var photo = user["photo"];
+                    if (photo != null)
                     {
-                        if (!uri.Contains(".gif"))
+                        // 4.0
+                        var prefix = Json.TryGetJsonProperty(photo, "prefix");
+                        var suffix = Json.TryGetJsonProperty(photo, "suffix");
+                        string uri = null;
+                        if (prefix != null && suffix != null)
                         {
-                            u.Photo = new Uri(uri);
+                            uri = prefix + suffix;
+                        }
+                        else
+                        {
+                            uri = Json.TryGetJsonProperty(user, "photo");
+                        }
+
+                        if (uri != null)
+                        {
+                            if (!uri.Contains(".gif"))
+                            {
+                                u.Photo = new Uri(uri);
+                            }
                         }
                     }
 
