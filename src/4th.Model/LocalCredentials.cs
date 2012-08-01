@@ -23,14 +23,8 @@ using JeffWilcox.Controls;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
-    // This entire file should be refactored and AgFx should not be used for 
-    // credentials.
-
-    [CachePolicy(CachePolicy.ValidCacheOnly, 60 * 60 * 24 * 365 * 10)] // NEV'A EVA unless you have a WP7 in 2020
-    public class LocalCredentials : ModelItemBase // DataLoaderModelItemBase
+    public class LocalCredentials : ModelItemBase
     {
-        private const string LoginIdentity = "_CurrentUser_";
-
         private static LocalCredentials _current;
 
         public static LocalCredentials Current
@@ -49,12 +43,18 @@ namespace JeffWilcox.FourthAndMayor.Model
             }
         }
 
+        private LocalCredentials()
+        {
+            _userTokenSettings = UserTokenSettings.Instance;
+        }
+
+        private UserTokenSettings _userTokenSettings;
+
         public static bool Initialize()
         {
             if (_current == null)
             {
-                // Synchronous load attempt of the credentials.
-                _current = DataManager.Current.LoadFromCache<LocalCredentials>(LoginIdentity);
+                _current = new LocalCredentials();
             }
             return _current.HasLoggedIn;
         }
@@ -67,12 +67,11 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         public static void Logout()
         {
-            _token = null;
             if (_current != null)
             {
-                _current._userId = null;
-
-                DataManager.Current.Clear<LocalCredentials>(LoginIdentity);
+                _current._userTokenSettings.OAuth2Token = null;
+                _current._userTokenSettings.UserId = null;
+                _current._userTokenSettings.Save();
 
                 DataManager.Current.DeleteCache();
 
@@ -85,75 +84,73 @@ namespace JeffWilcox.FourthAndMayor.Model
         {
             get
             {
-                return !string.IsNullOrEmpty(_token) && !string.IsNullOrEmpty(_userId);
+                return !string.IsNullOrEmpty(_userTokenSettings.OAuth2Token) && !string.IsNullOrEmpty(_userTokenSettings.UserId);
             }
         }
         #endregion
 
-        #region Property UserId
-        private string _userId;
         public string UserId
         {
-            get { return _userId; }
-            set
+            get
             {
-                _userId = value;
-                RaisePropertyChanged("UserId");
+                return _userTokenSettings.UserId; 
             }
         }
-        #endregion
 
-        #region Property Token
-        private static string _token;
         public static string Token
         {
             get
             {
-                return _token;
+                return _current._userTokenSettings.OAuth2Token;
             }
-            set
-            {
-                if (_token != value)
-                {
-                    _token = value;
-                    // THIS IS STATIC! RaisePropertyChanged("Token");
-                }
-            }
-        }
-        #endregion
-
-        public LocalCredentials() : base(LoginIdentity)
-        {
-            base.NotificationContext = SynchronizationContext.Current;
         }
 
         private void LoginInternal(string authenticationToken)
         {
-            Token = authenticationToken;
-            System.Diagnostics.Debug.WriteLine("LoginInternal Refresh");
-            DataManager.Current.Refresh<LocalCredentials>(LoginIdentity,
-                (fbl) =>
-                {
-                    var so = Application.Current as ISetAuthenticationForThisAppInstance;
-                    if (so != null)
-                    {
-                        so.SetAuthenticationForThisAppInstance(_token);
-                        //FourSquareApp.Instance.SetAuthenticationForThisAppInstance(_token);
-                    }
-                    DataManager.Current.Flush();
-                    if (_current != null && string.IsNullOrEmpty(_current.UserId))
-                    {
-                        _current = DataManager.Current.LoadFromCache<LocalCredentials>(LoginIdentity);
-                    }
+            _userTokenSettings.OAuth2Token = authenticationToken;
+            _userTokenSettings.Save();
 
-                    OnAuthenticationSuccess(EventArgs.Empty);
-                }
-                ,
-                (ex) =>
+            System.Diagnostics.Debug.WriteLine("LoginInternal Refresh");
+
+            // This used to do more magic... question: does local user still
+            // get setup to determine whether this is all legit or not!?
+
+            var so = Application.Current as ISetAuthenticationForThisAppInstance;
+            if (so != null)
+            {
+                so.SetAuthenticationForThisAppInstance(_userTokenSettings.OAuth2Token);
+            }
+
+            DataManager.Current.Flush();
+
+            if (_current != null && string.IsNullOrEmpty(_current.UserId))
+            {
+                DataManager.Current.Load<User>("self", 
+                    
+                (usr) => 
                 {
-                    PriorityQueue.AddUiWorkItem(() => OnAuthenticationFailure(EventArgs.Empty));
-                }
-            );
+                    if (usr.FriendStatus == FriendStatus.Self)
+                    {
+                        _userTokenSettings.UserId = usr.UserId;
+                        _userTokenSettings.Save();
+
+                        OnAuthenticationSuccess(EventArgs.Empty);
+                    }
+                    else
+                    {
+                        OnAuthenticationFailure(EventArgs.Empty);
+                    }
+                }, 
+                
+                (fail) => 
+                {
+                    OnAuthenticationFailure(EventArgs.Empty);
+                });
+            }
+            else
+            {
+                OnAuthenticationSuccess(EventArgs.Empty);
+            }
         }
 
         public event EventHandler AuthenticationSuccess;
@@ -182,45 +179,14 @@ namespace JeffWilcox.FourthAndMayor.Model
             // "hack" for v1, v2 release
             ((ISignedOutThisInstance) Application.Current).SignedOutThisInstance = true;
 
-            Token = null;
-            _current = null;
+            // this code should be called by whatever actually calls us.
+            if (_userTokenSettings != null)
+            {
+                _userTokenSettings.OAuth2Token = null;
+                _userTokenSettings.UserId = null;
+            }
+
             Initialize();
-        }
-
-        public class LocalCredentialsDataLoader : DefaultDataLoader 
-        {
-            public override LoadRequest GetLoadRequest(LoadContext context, Type objectType)
-            {
-                if (string.IsNullOrEmpty(Token))
-                {
-                    return null;
-                }
-                return new LocalCredentialsLoadRequest(context, Token);
-            }
-
-            public override object Deserialize(LoadContext context, Type objectType, Stream stream)
-            {
-                var sr = new StreamReader(stream);
-
-                var lc = new LocalCredentials();
-
-                try
-                {
-                    Token = sr.ReadLine();
-                    lc.UserId = sr.ReadLine();
-
-                    if (!string.IsNullOrEmpty(Token) &&
-                        !string.IsNullOrEmpty(lc.UserId))
-                    {
-                        return lc;
-                    }
-                }
-                catch
-                {
-                }
-
-                throw new InvalidOperationException("There was a problem validating your credentials.");
-            }
         }
     }
 }

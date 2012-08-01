@@ -165,6 +165,7 @@
     <Compile Include="UserSettings.cs" />
     <Compile Include="UserTips.cs" />
     <Compile Include="UserTodos.cs" />
+    <Compile Include="UserTokenSettings.cs" />
     <Compile Include="UserVenueHistory.cs" />
     <Compile Include="UserVenueStatistic.cs" />
     <Compile Include="UserVenueStats.cs" />
