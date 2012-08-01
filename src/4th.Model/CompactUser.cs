@@ -99,7 +99,9 @@ namespace JeffWilcox.FourthAndMayor.Model
                 string uri = null;
                 if (prefix != null && suffix != null)
                 {
-                    uri = prefix + suffix;
+                    // Hard-coding for now to the thumbnail size often used in
+                    // my app.
+                    uri = prefix + "72x72" + suffix;
                 }
                 else
                 {
@@ -122,13 +124,27 @@ namespace JeffWilcox.FourthAndMayor.Model
             bu.IsFriend = (fs == FriendStatus.Friend || fs == FriendStatus.Self);
             bu.IsSelf = fs == FriendStatus.Self;
 
-            string gender = Json.TryGetJsonProperty(user, "gender");
-            if (gender != null)
+            bu.Gender = TryGetGender(user, "gender");
+            if (bu.Gender != Gender.None)
             {
-                bu.Gender = gender == "female" ? Gender.Female : Gender.Male;
                 bu.GenderPhoto = bu.Gender == Gender.Female ? FemalePhoto : MalePhoto;
             }
             return bu;
+        }
+
+        public static Gender TryGetGender(JToken token, string key)
+        {
+            string s = Json.TryGetJsonProperty(token, key);
+            if (s == "male")
+            {
+                return Gender.Male;
+            }
+            else if (s == "female")
+            {
+                return Gender.Female;
+            }
+
+            return Gender.None;
         }
 
         public override string ToString()

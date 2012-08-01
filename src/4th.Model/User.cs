@@ -179,18 +179,18 @@ namespace JeffWilcox.FourthAndMayor.Model
             }
         }
 
-        [DependentOnProperty("Photo")]
+        private Uri _fullResolutionPhoto;
         public Uri FullResolutionPhoto
         {
             get
             {
-                if (_photo != null)
-                {
-                    var p = _photo.ToString();
-                    return new Uri(p.Replace("_thumbs", string.Empty), UriKind.Absolute);
-                }
+                return _fullResolutionPhoto;
+            }
 
-                return null;
+            set
+            {
+                _fullResolutionPhoto = value;
+                RaisePropertyChanged("FullResolutionPhoto");
             }
         }
 
@@ -712,10 +712,15 @@ namespace JeffWilcox.FourthAndMayor.Model
                         string uri = null;
                         if (prefix != null && suffix != null)
                         {
-                            uri = prefix + suffix;
+                            // hard-coding for now in the new v4/5 syntax.
+                            uri = prefix + "110x110" + suffix;
+
+                            u.FullResolutionPhoto = new Uri(prefix + "original" + suffix, UriKind.Absolute);
                         }
                         else
                         {
+                            // Pre v-4... the full resolution version will be
+                            // broken since I've removed that code.
                             uri = Json.TryGetJsonProperty(user, "photo");
                         }
 

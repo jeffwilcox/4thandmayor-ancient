@@ -111,17 +111,35 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
             }
 
-            Uri pu = new Uri(
-                string.Format(
-                CultureInfo.InvariantCulture,
-                "/Views/PhotoViewer.xaml?photoUri={0}&isSelf={1}&id={2}",
+            // new Foursquare (august 2012)
+            if (sizes == null && primaryUri == null)
+            {
+                string prefix = Json.TryGetJsonProperty(json, "prefix");
+                string suffix = Json.TryGetJsonProperty(json, "suffix");
+                if (prefix != null && suffix != null)
+                {
+                    p.Uri = new Uri(prefix + "original" + suffix, UriKind.Absolute);
+                }
+                else
+                {
+                    return p;
+                }
+            }
 
-                Uri.EscapeDataString(p.Uri.ToString()),
-                p.IsSelf ? "true" : "false",
-                p.Id
-                )
-                , UriKind.Relative);
-            p.LocalPhotoViewerUri = pu;
+            if (p.Uri != null)
+            {
+                Uri pu = new Uri(
+                    string.Format(
+                    CultureInfo.InvariantCulture,
+                    "/Views/PhotoViewer.xaml?photoUri={0}&isSelf={1}&id={2}",
+
+                    Uri.EscapeDataString(p.Uri.ToString()),
+                    p.IsSelf ? "true" : "false",
+                    p.Id
+                    )
+                    , UriKind.Relative);
+                p.LocalPhotoViewerUri = pu;
+            }
 
             return p;
         }
