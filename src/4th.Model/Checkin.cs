@@ -162,7 +162,6 @@ namespace JeffWilcox.FourthAndMayor.Model
             string created = Json.TryGetJsonProperty(checkin, "createdAt");
             if (created != null)
             {
-                // FUTURE: Consider an option to NOT include people in the checkin list who have not checked in within the last month. (perf default!)
                 DateTime dtc = UnixDate.ToDateTime(created);
                 c.CreatedDateTime = dtc;
                 c.Created = GetDateString(dtc);
