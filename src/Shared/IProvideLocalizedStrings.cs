@@ -2,7 +2,7 @@
 using System.Windows;
 using System;
 
-namespace JeffWilcox.Controls
+namespace JeffWilcox.FourthAndMayor
 {
     // refactor out sometime
 
@@ -21,7 +21,7 @@ namespace JeffWilcox.Controls
                 return appStrings;
             }
 
-            throw new InvalidOperationException("The Application does not support IProvideLocalizedStrings.");
+            throw new InvalidOperationException("The Application instance does not implement IProvideLocalizedStrings.");
         }
 
         public static string GetLocalizedString(this Application app, string key)

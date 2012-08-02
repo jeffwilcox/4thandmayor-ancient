@@ -23,6 +23,7 @@ using System.Net;
 using System.Windows;
 using AgFx;
 using Microsoft.Phone.Shell;
+using JeffWilcox.FourthAndMayor;
 
 namespace JeffWilcox.Controls
 {
@@ -143,8 +144,7 @@ namespace JeffWilcox.Controls
                                 {
                                     PriorityQueue.AddUiWorkItem(() =>
                                     {
-                                        // LOCALIZE:
-                                        MessageBox.Show("The network connection was not available to download the image needed to create the tile. Please try again later.");
+                                        MessageBox.Show(Application.Current.GetLocalizedString("AppTileManager_NoNetwork"));
                                     });
                                     
                                     return;
@@ -199,9 +199,9 @@ namespace JeffWilcox.Controls
                             }
                         };
 
-                    // LOCALIZE:
-                    updateToken = CentralStatusManager.Instance.BeginShowEllipsisMessage("Preparing tile graphics");
+                    updateToken = CentralStatusManager.Instance.BeginShowEllipsisMessage(Application.Current.GetLocalizedString("Status_PreparingTileGraphics"));
                     wc.OpenReadAsync(tileSettings.FrontPhoto);
+
                     return;
                 }
             }
@@ -232,8 +232,8 @@ namespace JeffWilcox.Controls
                 {
                     AppTileSettings.Instance.Tiles.Remove(navigationUri);
                     AppTileSettings.Instance.Save();
-                    // LOCALIZE:
-                    MessageBox.Show("Unfortunately the tile could not be created at this time.");
+
+                    MessageBox.Show(Application.Current.GetLocalizedString("AppTileManager_Error_TileCreationGeneric"));
                 }
             }
             else

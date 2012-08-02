@@ -79,6 +79,33 @@ namespace JeffWilcox.FourthAndMayor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unfortunately the tile could not be created at this time..
+        /// </summary>
+        public static string AppTileManager_Error_TileCreationGeneric {
+            get {
+                return ResourceManager.GetString("AppTileManager_Error_TileCreationGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The network connection was not available to download the image needed to create the tile. Please try again later..
+        /// </summary>
+        public static string AppTileManager_NoNetwork {
+            get {
+                return ResourceManager.GetString("AppTileManager_NoNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was a problem trying to read the categories list..
+        /// </summary>
+        public static string Data_Error_CannotReadCategories {
+            get {
+                return ResourceManager.GetString("Data_Error_CannotReadCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Downloading place info.
         /// </summary>
         public static string DownloadingPlaceInfo {
@@ -102,6 +129,15 @@ namespace JeffWilcox.FourthAndMayor {
         public static string Friends {
             get {
                 return ResourceManager.GetString("Friends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Badges.
+        /// </summary>
+        public static string Group_Badge_Name {
+            get {
+                return ResourceManager.GetString("Group_Badge_Name", resourceCulture);
             }
         }
         
@@ -399,6 +435,15 @@ namespace JeffWilcox.FourthAndMayor {
         public static string SpecialUnlocked {
             get {
                 return ResourceManager.GetString("SpecialUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preparing tile graphics.
+        /// </summary>
+        public static string Status_PreparingTileGraphics {
+            get {
+                return ResourceManager.GetString("Status_PreparingTileGraphics", resourceCulture);
             }
         }
         

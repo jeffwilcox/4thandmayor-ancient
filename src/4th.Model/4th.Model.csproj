@@ -181,6 +181,10 @@
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JeffWilcox.FourthAndMayor.Localization\JeffWilcox.FourthAndMayor.Localization.csproj">
+      <Project>{71F2CB55-511A-4522-A417-5DA339503A18}</Project>
+      <Name>JeffWilcox.FourthAndMayor.Localization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
       <Name>Shared</Name>

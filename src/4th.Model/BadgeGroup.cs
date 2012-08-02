@@ -28,8 +28,8 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         public override string ToString()
         {
-            // LOCALIZE:
-            return Name ?? "Badges";
+            // "Badges";
+            return Name ?? System.Windows.Application.Current.GetLocalizedString("Group_Badge_Name");
         }
     }
 }

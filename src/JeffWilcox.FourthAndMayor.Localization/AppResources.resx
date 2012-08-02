@@ -125,6 +125,15 @@
     <value>check-in...</value>
     <comment>Action text for going to the detailed check-in page.</comment>
   </data>
+  <data name="AppTileManager_Error_TileCreationGeneric" xml:space="preserve">
+    <value>Unfortunately the tile could not be created at this time.</value>
+  </data>
+  <data name="AppTileManager_NoNetwork" xml:space="preserve">
+    <value>The network connection was not available to download the image needed to create the tile. Please try again later.</value>
+  </data>
+  <data name="Data_Error_CannotReadCategories" xml:space="preserve">
+    <value>There was a problem trying to read the categories list.</value>
+  </data>
   <data name="DownloadingPlaceInfo" xml:space="preserve">
     <value>Downloading place info</value>
   </data>
@@ -263,6 +272,9 @@
   </data>
   <data name="SpecialUnlocked" xml:space="preserve">
     <value>special unlocked</value>
+  </data>
+  <data name="Status_PreparingTileGraphics" xml:space="preserve">
+    <value>Preparing tile graphics</value>
   </data>
   <data name="Stylized4thAndMayor" xml:space="preserve">
     <value>4ᵀᴴ &amp; MAYOR</value>

@@ -18,6 +18,8 @@ using System;
 using System.Collections.Generic;
 using AgFx;
 using Newtonsoft.Json.Linq;
+using JeffWilcox.FourthAndMayor;
+using System.Windows;
 
 namespace JeffWilcox.FourthAndMayor.Model
 {
@@ -155,7 +157,6 @@ namespace JeffWilcox.FourthAndMayor.Model
                 try
                 {
                     var u = new Categories(context);
-                    //u.IgnoreRaisingPropertyChanges = true;
 
                     var jc = json["categories"];
                     if (jc != null)
@@ -178,7 +179,6 @@ namespace JeffWilcox.FourthAndMayor.Model
                         }
                     }
 
-                    //u.IgnoreRaisingPropertyChanges = false;
                     u.IsLoadComplete = true;
 
                     return u;
@@ -186,8 +186,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
-                        // LOCALIZE:
-                        "There was a problem trying to read the categories list.", e);
+                        Application.Current.GetLocalizedString("Data_Error_CannotReadCategories"), e);
                 }
             }
         }
