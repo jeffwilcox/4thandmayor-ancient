@@ -268,6 +268,33 @@ namespace JeffWilcox.FourthAndMayor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to road view.
+        /// </summary>
+        public static string MapRoadView {
+            get {
+                return ResourceManager.GetString("MapRoadView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to satellite view.
+        /// </summary>
+        public static string MapSatelliteView {
+            get {
+                return ResourceManager.GetString("MapSatelliteView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to me.
+        /// </summary>
+        public static string Me {
+            get {
+                return ResourceManager.GetString("Me", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no mayor.
         /// </summary>
         public static string NoMayor {

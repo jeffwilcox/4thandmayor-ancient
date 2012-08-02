@@ -397,6 +397,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "The list information could not be returned right now.", e);
                 }
             }

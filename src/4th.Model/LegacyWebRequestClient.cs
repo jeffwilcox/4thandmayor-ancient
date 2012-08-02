@@ -171,6 +171,8 @@ namespace JeffWilcox.FourthAndMayor
                 handler2(this,
                     !string.IsNullOrEmpty(responseStr)
                         ? new MyDownloadStringCompletedEventArgs(responseStr, null)
+
+                        // LOCALIZE:
                         : new MyDownloadStringCompletedEventArgs(null, new Exception("No response from server.")));
             }
         }

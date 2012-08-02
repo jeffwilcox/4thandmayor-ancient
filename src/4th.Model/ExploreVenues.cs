@@ -174,6 +174,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "We couldn't explore right now, please try again later.", e);
                 }
             }

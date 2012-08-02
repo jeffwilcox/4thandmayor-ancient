@@ -28,6 +28,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         public override string ToString()
         {
+            // LOCALIZE:
             return Name ?? "Badges";
         }
     }

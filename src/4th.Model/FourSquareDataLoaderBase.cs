@@ -78,8 +78,13 @@ namespace JeffWilcox.FourthAndMayor.Model
                         _oneTimeMessageBoxShown = true;
                         PriorityQueue.AddUiWorkItem(() =>
                             {
+                                // LOCALIZE:
                                 MessageBoxWindow.Show("The Foursquare servers are experiencing problems. Please check status.foursquare.com for updates.",
-                                    "Foursquare is down", System.Windows.MessageBoxButton.OK);
+
+                                    // LOCALIZE:
+                                    "Foursquare is down", 
+                                    
+                                    System.Windows.MessageBoxButton.OK);
                             });
                     }
                     return null;
@@ -109,6 +114,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                                     // FourSquareApp.Instance.SignOutAndClear();
                                 }
                                 throw new UserIntendedException(
+                                    // LOCALIZE:
                                     "Invalid OAuth credentials, please sign in again.",
                                     new InvalidOperationException("Invalid OAUTH"));
                             // OAuth token was not provided or was invalid.
@@ -127,6 +133,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                             case "rate_limit_exceeded":
                                 // Rate limit for this hour exceeded.
+                                // LOCALIZE:
                                 throw new UserIntendedException(
                                     "You've been using foursquare a lot this hour and are now rate limited!",
                                     new InvalidOperationException("Rate limit exceeded."));
@@ -140,6 +147,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                             case "server_error":
                                 throw new UserIntendedException(
+                                    // LOCALIZE:
                                     "Foursquare's servers are having difficulty. Please check status.foursquare.com for updates.",
                                     new InvalidOperationException("Server error"));
                             // Server is currently experiencing issues. Check status.foursquare.com for updates.
@@ -266,6 +274,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             PriorityQueue.AddUiWorkItem(() =>
             {
                 MessageBoxWindow.Show(message,
+                    // LOCALIZE:
                     "Foursquare communication problem", System.Windows.MessageBoxButton.OK);
             });
         }

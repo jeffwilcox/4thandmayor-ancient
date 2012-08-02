@@ -81,6 +81,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     }
                     catch (Exception ee)
                     {
+                        // LOCALIZE:
                         e = new UserIntendedException("There was a problem adding the tip, please try again later.", ee);
                     }
                 }
@@ -130,6 +131,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
 
                 // Used for all other tips.
+                // LOCALIZE:
                 return "added " + Created + (User != null ? " by " + User.ToString() : string.Empty);
             }
         }
@@ -199,10 +201,13 @@ namespace JeffWilcox.FourthAndMayor.Model
             }
 
             if (t.DoneCount <= 0)
+                // LOCALIZE:
                 t.DoneText = "No one has done this.";
             else if (t.DoneCount == 1)
+                // LOCALIZE:
                 t.DoneText = "1 person has done this.";
             else
+                // LOCALIZE:
                 t.DoneText = t.DoneCount.ToString(CultureInfo.InvariantCulture) + " people have done this.";
 
             var photo = tip["photo"];
@@ -223,11 +228,13 @@ namespace JeffWilcox.FourthAndMayor.Model
                 if (status == "done")
                 {
                     t.Status = TipStatus.Done;
+                    // LOCALIZE:
                     t.StatusText = "You've done this!";
                 }
                 else if (status == "todo")
                 {
                     t.Status = TipStatus.Todo;
+                    // LOCALIZE:
                     t.StatusText = "You need to do this!";
 
                     // Don't tell the user nobody has done this if it's just them.

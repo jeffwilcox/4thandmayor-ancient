@@ -207,6 +207,18 @@
     <value>Location Opt-In</value>
     <comment>Used for a header on the page to opt-in to location</comment>
   </data>
+  <data name="MapRoadView" xml:space="preserve">
+    <value>road view</value>
+    <comment>All lowercase app bar menu item for the 'road view' on maps</comment>
+  </data>
+  <data name="MapSatelliteView" xml:space="preserve">
+    <value>satellite view</value>
+    <comment>All lowercase app bar menu item for the 'satellite view' on maps</comment>
+  </data>
+  <data name="Me" xml:space="preserve">
+    <value>me</value>
+    <comment>lowercase text for me (your self)</comment>
+  </data>
   <data name="NoMayor" xml:space="preserve">
     <value>no mayor</value>
     <comment>Indicates there is 'no mayor' at the current place, lowercase</comment>

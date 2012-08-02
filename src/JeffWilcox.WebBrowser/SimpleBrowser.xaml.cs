@@ -56,6 +56,8 @@ namespace JeffWilcox.WebBrowser
                     {
                         StatusToken.TryComplete(ref _token);
                     }
+
+                    // LOCALIZE:
                     _token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Loading information");
 
                     _uri = uri;
@@ -108,6 +110,7 @@ namespace JeffWilcox.WebBrowser
         {
             ApplicationBar = _appBar = ThemeManager.CreateApplicationBar();
 
+            // LOCALIZE:
             _refreshButton = AppBarHelper.AddButton(_appBar, "refresh", OnAppBarItemClick, "/Images/AB/appbar.sync.rest.png");
             _refreshButton.IsEnabled = false;
 
@@ -126,6 +129,7 @@ namespace JeffWilcox.WebBrowser
             var abib = (IApplicationBarMenuItem)sender;
             switch (abib.Text)
             {
+                // LOCALIZE:
                 case "refresh":
                     break;
             }

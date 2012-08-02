@@ -113,6 +113,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             catch (Exception e)
             {
                 throw new UserIntendedException(
+                    // LOCALIZE:
                     "There was a problem trying to check-in, please try again later.", e);
             }
         }

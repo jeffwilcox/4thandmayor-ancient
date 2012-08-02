@@ -29,6 +29,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             string text = Json.TryGetJsonProperty(item, "name");
             if (string.IsNullOrEmpty(text))
             {
+                // LOCALIZE:
                 text = "Popular tip";
             }
             Text = text;

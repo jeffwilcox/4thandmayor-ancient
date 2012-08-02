@@ -54,6 +54,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                 return string.Format(
                     CultureInfo.InvariantCulture,
+                    // LOCALIZE:
                     "Trending places within {0}{1}", 
                     ImperialUnits.GetMetersInProperUnitsDisplay(LoadContext.RadiusMeters),
                     count);
@@ -123,6 +124,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "There was a problem trying to read information about nearby trending places.", e);
                 }
             }

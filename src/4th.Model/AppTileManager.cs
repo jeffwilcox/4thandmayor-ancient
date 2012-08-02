@@ -143,6 +143,7 @@ namespace JeffWilcox.Controls
                                 {
                                     PriorityQueue.AddUiWorkItem(() =>
                                     {
+                                        // LOCALIZE:
                                         MessageBox.Show("The network connection was not available to download the image needed to create the tile. Please try again later.");
                                     });
                                     
@@ -197,6 +198,8 @@ namespace JeffWilcox.Controls
                                 }
                             }
                         };
+
+                    // LOCALIZE:
                     updateToken = CentralStatusManager.Instance.BeginShowEllipsisMessage("Preparing tile graphics");
                     wc.OpenReadAsync(tileSettings.FrontPhoto);
                     return;
@@ -229,6 +232,7 @@ namespace JeffWilcox.Controls
                 {
                     AppTileSettings.Instance.Tiles.Remove(navigationUri);
                     AppTileSettings.Instance.Save();
+                    // LOCALIZE:
                     MessageBox.Show("Unfortunately the tile could not be created at this time.");
                 }
             }

@@ -37,9 +37,11 @@ namespace JeffWilcox.FourthAndMayor.Model
                 {
                     if (VenueCount == 1)
                     {
+                        // LOCALIZE:
                         return "1 Place";
                     }
 
+                    // LOCALIZE:
                     return VenueCount + " Different Places";
                 }
                 return null;

@@ -101,6 +101,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 {
                     res = new LoadRequestResult(
                         new InvalidOperationException(
+                        // LOCALIZE:
                             "There was a problem understanding the response from the service.", e));
                 }
             }

@@ -107,6 +107,8 @@ namespace JeffWilcox.FourthAndMayor.Model
       //      }
 #endif
 
+            // LOCALIZE: OR use Toolkit bits
+
             if (ts.TotalMinutes < 1.5)
             {
                 return "just now";
@@ -301,6 +303,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
                 else
                 {
+                    // LOCALIZE:
                     c.DisplayBetween = "[off-the-grid]"; // @ 
                 }
             }
@@ -385,9 +388,6 @@ namespace JeffWilcox.FourthAndMayor.Model
                 {
                     return User.UserId;
                 }
-//#if DEBUG
-  //              throw new NotImplementedException("There must be a user!");
-//#endif
 
                 return CheckinId;
             }

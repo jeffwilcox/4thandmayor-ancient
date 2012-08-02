@@ -80,6 +80,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
                 else
                 {
+                    // LOCALIZE:
                     throw new InvalidOperationException("Legacy client isn't being used, but something entirely different!");
                 }
             }

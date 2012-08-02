@@ -52,6 +52,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     }
                     catch (Exception ee)
                     {
+                        // LOCALIZE:
                         e = new UserIntendedException("There was a problem adding your comment, please try again later.", ee);
                     }
                 }

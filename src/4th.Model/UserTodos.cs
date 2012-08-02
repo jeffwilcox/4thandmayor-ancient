@@ -55,6 +55,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             public override LoadRequest GetLoadRequest(LoadContext context, Type objectType)
             {
                 // TODO: CONSIDER: Expose sorting properly through a load context instead.
+                // LOCALIZE:
                 string sortType = LocationAssistant.Instance.LastKnownLocation != null ? "nearby" : "recent";
 
                 var id = (string)context.Identity;
@@ -100,6 +101,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "There was a problem trying to read the list of todos.", e);
                 }
             }

@@ -143,6 +143,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "Your updates could not be refreshed right now.", e);
                 }
             }

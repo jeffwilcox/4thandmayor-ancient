@@ -25,6 +25,7 @@ namespace JeffWilcox.FourthAndMayor.Model
         public string Name { get; set; }
         public override string ToString()
         {
+            // LOCALIZE:
             return Name ?? "Tips";
         }
     }

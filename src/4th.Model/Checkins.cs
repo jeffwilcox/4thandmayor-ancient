@@ -62,7 +62,6 @@ namespace JeffWilcox.FourthAndMayor.Model
                 if (LocalCredentials.Current != null && string.IsNullOrEmpty(LocalCredentials.Current.UserId))
                 {
                     throw new UserIgnoreException();
-                    //throw new UserIntendedException("You must be signed into the service.", "Checkins.GetLoadRequest");
                 }
 
                 return BuildRequest(
@@ -159,6 +158,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
                 catch (Exception e)
                 {
+                    // LOCALIZE:
                     throw new UserIntendedException(
                         "There was a problem trying to read information about recent checkins.", e);
                 }

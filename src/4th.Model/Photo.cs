@@ -29,15 +29,25 @@ namespace JeffWilcox.FourthAndMayor.Model
             switch (problem)
             {
                 case PhotoProblem.HateViolence:
+                    // LOCALIZE:
                     return "hate_violence";
+
                 case PhotoProblem.Illegal:
+                    // LOCALIZE:
                     return "illegal";
+
                 case PhotoProblem.Nudity:
+                    // LOCALIZE:
                     return "nudity";
+
                 case PhotoProblem.SpamScam:
+                    // LOCALIZE:
                     return "spam_scam";
+
                 case PhotoProblem.Unrelated:
+                    // LOCALIZE:
                     return "unrelated";
+
                 default:
                     throw new InvalidOperationException();
             }

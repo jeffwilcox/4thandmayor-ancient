@@ -190,18 +190,17 @@ namespace Maps
             
             _modeItem = new ApplicationBarMenuItem();
             _modeItem.Click += _sat_Click;
+            // LOCALIZE:
             _modeItem.Text = _isSatelliteViewOn ? "road view" : "satellite view";
             
             ApplicationBar.MenuItems.Add(_modeItem);
 
+            // LOCALIZE:
             AppBarHelper.AddButton((ApplicationBar)ApplicationBar, "me", OnAppBarItemClick, "/Images/AB/map.center.png");
             //AppBarHelper.AddButton((ApplicationBar)ApplicationBar, "directions", OnAppBarItemClick, "/Images/AB/map.directions.png");
 
-            if (Environment.OSVersion.Version.Minor >= 1)
-            {
-                // Mango.
-                AppBarHelper.AddButton((ApplicationBar)ApplicationBar, "open in maps app", OnAppBarItemClick);
-            }
+            // LOCALIZE:
+            AppBarHelper.AddButton((ApplicationBar)ApplicationBar, "open in maps app", OnAppBarItemClick);
 
             ApplicationBar.IsVisible = true;
         }
@@ -211,18 +210,17 @@ namespace Maps
             var abib = (IApplicationBarMenuItem)sender;
             switch (abib.Text)
             {
+                // LOCALIZE:
                 case "open in maps app":
                     OpenInBingMaps();
                     break;
 
+                // LOCALIZE:
                 case "me":
                     _map.SetView(
                         LocationAssistant.Instance.LastKnownLocation.AsGeoCoordinate(),
                         _map.ZoomLevel);
                     break;
-
-                //case "directions":
-                    //break;
             }
         }
 
@@ -232,15 +230,6 @@ namespace Maps
             {
                 double zoom = 18.0;
 
-                /*if (AppPlatform.IsMango)
-                {
-                    var bingMaps = ((App)(App.Current)).Mango.Tasks.CreateBingMapsTask();
-                    bingMaps.Center = center;
-                    bingMaps.ZoomLevel = zoom;
-                    worked = true;
-                    bingMaps.Show();
-                }
-                else*/
                 if (_placePushpin != null && _placePushpin.Content is MapPlaceInformation)
                 {
                     var mpi = _placePushpin.Content as MapPlaceInformation;
@@ -258,6 +247,7 @@ namespace Maps
                         }
                         catch
                         {
+                            // LOCALIZE:
                             MessageBox.Show("On some phones the map cannot be opened. Your culture may be set to a non-English culture where a known bug exists.", "Sorry!", MessageBoxButton.OK);
                         }
                     }
@@ -270,6 +260,7 @@ namespace Maps
                     }
                     catch (Exception)
                     {
+                        // LOCALIZE:
                         MessageBox.Show("On some phones the map cannot be opened. Your culture may be set to a non-English culture where a known bug exists.", "Sorry!", MessageBoxButton.OK);
                     }
                 }
@@ -322,6 +313,7 @@ namespace Maps
             _map.Mode = _isSatelliteViewOn ? (MapMode)new AerialMode() : (MapMode)new RoadMode();
             if (_modeItem != null)
             {
+                // LOCALIZE:
                 _modeItem.Text = _isSatelliteViewOn ? "road view" : "satellite view";
             }
         }

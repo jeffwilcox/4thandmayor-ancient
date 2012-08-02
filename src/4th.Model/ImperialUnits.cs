@@ -80,6 +80,7 @@ namespace JeffWilcox.FourthAndMayor
 
         private static string GetMilesPrefix(double miles)
         {
+            // LOCALIZE:
             string post = miles > 1 ? " miles" : " mile";
 
             int iprefix = (int)Math.Floor(miles);
@@ -89,6 +90,7 @@ namespace JeffWilcox.FourthAndMayor
 
             if (iprefix != 0 && left < (QuarterMile * .5))
             {
+                // LOCALIZE:
                 if (iprefix == 1) { post = " mile"; }
                 return prefix + post;
             }
@@ -133,8 +135,11 @@ namespace JeffWilcox.FourthAndMayor
                     int rnd = (int)Math.Round(feet);
                     if (rnd < 10)
                     {
+                        // LOCALIZE:
                         return "right here";
                     }
+                    // LOCALIZE:
+                    // LOCALIZE:
                     return rnd == 1 ? "1 foot" : Json.GetPrettyInt(rnd) + " feet";
                 }
                 return GetMilesPrefix(feet / FeetInMile);
@@ -145,6 +150,7 @@ namespace JeffWilcox.FourthAndMayor
                 int rnd = (int)Math.Round(meters);
                 if (rnd > 500 && rnd < 750)
                 {
+                    // LOCALIZE:
                     return "½ km";
                 }
 
@@ -152,9 +158,12 @@ namespace JeffWilcox.FourthAndMayor
                 {
                     double km = meters / 1000;
                     int kmi = (int)Math.Round(km);
+
+                    // LOCALIZE:
                     return Json.GetPrettyInt(kmi) + " km";
                 }
 
+                // LOCALIZE:
                 return rnd == 1 ? "1 meter" : Json.GetPrettyInt(rnd) + " meters";
             }
         }

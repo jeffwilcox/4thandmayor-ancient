@@ -127,6 +127,7 @@ namespace JeffWilcox.FourthAndMayor
             {
                 if (_token == null && useCredentials == true)
                 {
+                    // LOCALIZE:
                     throw new InvalidOperationException("No valid authentication information is present. Make sure that you are signed in.");
                 }
                 if (_token != null)
@@ -196,6 +197,7 @@ namespace JeffWilcox.FourthAndMayor
                 var la = LocationAssistant.Instance.LastKnownLocation;
                 if (la == null)
                 {
+                    // LOCALIZE:
                     string error =
                         "The location service has been turned off, so this feature is unfortunately not available.";
 

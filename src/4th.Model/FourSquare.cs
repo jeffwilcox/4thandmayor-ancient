@@ -69,6 +69,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Updating friendship");
 
             r.CallAsync(
@@ -80,6 +81,7 @@ namespace JeffWilcox.FourthAndMayor
                     {
                         if (exx == null)
                         {
+                            // LOCALIZE:
                             token.CompleteWithAcknowledgement("OK");
 
                             //var json = FourSquareDataLoaderBase.ProcessMetaAndNotificationsReturnJson(str);
@@ -237,6 +239,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Saving place");
 
             r.CallAsync(
@@ -366,7 +369,9 @@ namespace JeffWilcox.FourthAndMayor
                         string.Format(
                             CultureInfo.InvariantCulture, 
                             "lists/{0}/{1}", 
-                            listId, 
+                            listId,
+
+                            // LOCALIZE:
                             shouldFollow ? "follow" : "unfollow"),
                         GeoMethodType.Optional);
             var r = new FourSquareServiceRequest
@@ -375,6 +380,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage(shouldFollow ? "Following" : "Unfollowing");
 
             r.CallAsync((str, ex) =>
@@ -400,6 +406,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Updating notifications system");
 
             r.CallAsync((str, ex) =>
@@ -444,6 +451,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Creating new list");
 
             r.CallAsync(
@@ -638,6 +646,7 @@ namespace JeffWilcox.FourthAndMayor
 
             r.PostParameters = @params;
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Uploading photo");
             
             r.CallAsync((str, ex) =>
@@ -702,6 +711,7 @@ namespace JeffWilcox.FourthAndMayor
                 PostString = string.Empty,
             };
 
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Deleting");
 
             r.CallAsync((str, ex) =>
@@ -723,7 +733,6 @@ namespace JeffWilcox.FourthAndMayor
             var uuri = FourSquareWebClient.BuildFourSquareUri(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "photos/{0}/flag", photoId),
                         GeoMethodType.Optional,
-
                         "problem",
                         Photo.ProblemEnumToString(problem));
             var r = new FourSquareServiceRequest

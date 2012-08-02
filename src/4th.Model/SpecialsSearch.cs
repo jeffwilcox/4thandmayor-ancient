@@ -83,6 +83,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     nv.IgnoreRaisingPropertyChanges = true;
 
                     var specials = json["specials"];
+                    // LOCALIZE:
                     nv.SpecialsText = "no specials";
                     if (specials != null)
                     {
@@ -97,6 +98,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                         if (nv.Specials.Count > 1)
                         {
+                            // LOCALIZE:
                             nv.SpecialsText = nv.Specials.Count.ToString(CultureInfo.InvariantCulture) +
                                               " specials nearby";
                         }
@@ -104,6 +106,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                         {
                             if (nv.Specials.Count == 1)
                             {
+                                // LOCALIZE:
                                 nv.SpecialsText = "1 special nearby";
                             }
                         }
@@ -116,6 +119,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
                 catch (Exception e)
                 {
+                    // LOCALIZE:
                     throw new UserIntendedException("Nearby specials could not be loaded right now, sorry.", e);
                 }
             }

@@ -91,6 +91,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                                         if (compactVenue.CheckinsCount > 0)
                                         {
                                             // Hacky!
+                                            // LOCALIZE:
                                             compactVenue.OverrideHereNow(compactVenue.CheckinsCount == 1 ? "1 check-in" : compactVenue.CheckinsCount + " check-ins");
                                         }
 
@@ -109,6 +110,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "There was a problem trying to read the category favorites info.", e);
                 }
             }

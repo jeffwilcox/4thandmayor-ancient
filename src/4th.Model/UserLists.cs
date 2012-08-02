@@ -82,6 +82,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "There was a problem trying to find all of your lists.", e);
                 }
             }
@@ -111,6 +112,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                             {
                                 if (ni.Type == "todos")
                                 {
+                                    // LOCALIZE:
                                     ni.Name = "My To-dos";
                                 }
                                 else
@@ -120,6 +122,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                                     ni.Name = string.Empty; // !!! could be a bug farm.
                                     // warning, for 'My To-Do List' this is null!
 
+                                    // LOCALIZE:
                                     ni.Name = "My Lists";
 
                                     lastToAdd = ni;

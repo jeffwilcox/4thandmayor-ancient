@@ -53,6 +53,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 {
                     if (todo.Created != null)
                     {
+                        // LOCALIZE:
                         tip.OverrideAddedText = "added " + todo.Created + (
                             tip.User != null ? (" (via " + tip.User.ToString() + ")") : string.Empty);
                     }

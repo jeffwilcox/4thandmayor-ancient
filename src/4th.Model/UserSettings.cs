@@ -107,6 +107,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         private void SaveNewSetting(string settingName, bool newValue)
         {
+            // LOCALIZE:
             var token = CentralStatusManager.Instance.BeginShowEllipsisMessage("Saving setting");
 
             FourSquare.Instance.SaveSetting(settingName, newValue ? "1" : "0", () =>

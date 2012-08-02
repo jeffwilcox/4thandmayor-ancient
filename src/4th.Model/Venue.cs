@@ -237,6 +237,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 // This might need to have INPCs on it!
                 if (City != null && State != null && Zip != null)
                 {
+                    // LOCALIZE: ?
                     return City + ", " + State + " " + Zip;
                 }
                 return null;
@@ -507,7 +508,10 @@ namespace JeffWilcox.FourthAndMayor.Model
                 if (_todos != null && _todos.Count > 0)
                 {
                     return _todos.Count == 1
+                        // LOCALIZE:
                                ? "1 to-do here"
+
+                               // LOCALIZE:
                                : string.Format(CultureInfo.CurrentCulture, "{0} to-dos here", _todos.Count);
                 }
                 return null;
@@ -853,6 +857,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                         v.HasToDo = true;
                     }
 
+                    // LOCALIZE:
                     v.HereNow = "Nobody";
                     bool hereNow = false;
                     var herenow = venue["hereNow"];
@@ -892,6 +897,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                                         if (cc.User != null && cc.User.Relationship == FriendStatus.Self)
                                         {
                                             // Self!
+                                            // LOCALIZE:
                                             var selfGroup = new CheckinsGroup {Name = "you're here!"};
                                             isSelfHere = true;
                                             selfGroup.Add(cc);
@@ -918,7 +924,10 @@ namespace JeffWilcox.FourthAndMayor.Model
                                 {
                                     HereNowRemainderText =
                                         remainingCount == 1
+                                        // LOCALIZE:
                                             ? "... plus 1 person"
+
+                                            // LOCALIZE:
                                             : "... plus " + remainingCount.ToString() + " people",
                                 };
                                 lastGroup.Add(hnr);
@@ -933,14 +942,17 @@ namespace JeffWilcox.FourthAndMayor.Model
                             {
                                 if (totalCount > 1)
                                 {
+                                    // LOCALIZE:
                                     v.HereNow = prefix + Json.GetPrettyInt(totalCount) + " " + (isSelfHere ? "other " : "") + "people";
                                 }
                                 else if (totalCount == 1)
                                 {
+                                    // LOCALIZE:
                                     v.HereNow = prefix + "1 " + (isSelfHere ? "other " : "") + "person";
                                 }
                                 else if (totalCount == 0 && isSelfHere)
                                 {
+                                    // LOCALIZE:
                                     v.HereNow = "You are here";
                                 }
                             }
@@ -1018,20 +1030,24 @@ namespace JeffWilcox.FourthAndMayor.Model
                             {
                                 if (tc <= 0)
                                 {
+                                    // LOCALIZE:
                                     tipsCountStr = "No tips";
                                 }
                                 else if (tc == 1)
                                 {
+                                    // LOCALIZE:
                                     tipsCountStr = "1 tip";
                                 }
                                 else
                                 {
+                                    // LOCALIZE:
                                     tipsCountStr = tc.ToString() + " tips";
                                 }
                             }
                         }
                         else
                         {
+                            // LOCALIZE:
                             tipsCountStr = "No tips";
                         }
                         v.TipsCountText = tipsCountStr;
@@ -1069,6 +1085,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     }
 
                     var specials = venue["specials"];
+                    // LOCALIZE:
                     var specialsList = new SpecialGroup {Name = "specials here"};
                     if (specials != null)
                     {
@@ -1092,6 +1109,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                                 }
                                 if (specialsList.Count == 1)
                                 {
+                                    // LOCALIZE:
                                     specialsList.Name = "special here";
                                 }
                             }
@@ -1105,6 +1123,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     v.Specials = specialsList;
 
                     var nearby = venue["specialsNearby"];
+                    // LOCALIZE:
                     var nearbySpecialsList = new SpecialGroup {Name = "specials nearby"};
                     if (nearby != null)
                     {
@@ -1118,6 +1137,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                         }
                         if (nearbySpecialsList.Count == 1)
                         {
+                            // LOCALIZE:
                             nearbySpecialsList.Name = "special nearby";
                         }
                     }
@@ -1188,6 +1208,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "There was a problem trying to read the venue information.", e);
                 }
 

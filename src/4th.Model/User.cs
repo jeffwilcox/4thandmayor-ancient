@@ -343,6 +343,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             {
                 if (_pendingFriendFrequests > 0)
                 {
+                    // LOCALIZE:
                     return _pendingFriendFrequests + " pending friend request" + (_pendingFriendFrequests == 1 ? string.Empty : "s");
                 }
 
@@ -754,6 +755,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                         {
                             if (i > 0)
                             {
+                                // LOCALIZE:
                                 u.TotalCheckins = 
                                     Json.GetPrettyInt(i) 
                                     + " " 
@@ -764,6 +766,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                         if (u.TotalCheckins == null)
                         {
+                            // LOCALIZE:
                             u.TotalCheckins = "No check-ins";
                         }
 
@@ -802,21 +805,21 @@ namespace JeffWilcox.FourthAndMayor.Model
                         {
                             if (tc <= 0)
                             {
+                                // LOCALIZE:
                                 u.TipsCount = "No tips";
                             }
                             else if (tc == 1)
                             {
+                                // LOCALIZE:
                                 u.TipsCount = "1 tip";
                             }
                             else
                             {
+                                // LOCALIZE:
                                 u.TipsCount = tc.ToString(CultureInfo.InvariantCulture) + " tips";
                             }
                         }
                     }
-
-                    // TODO: V2: TIPS COUNT
-                    // TODO: V2: TODOS COUNT
 
                     var friends = user["friends"];
                     if (friends != null)
@@ -824,32 +827,20 @@ namespace JeffWilcox.FourthAndMayor.Model
                         string friendsCount = Json.TryGetJsonProperty(friends, "count");
                         if (friendsCount != null)
                         {
+                            // LOCALIZE:
                             u.FriendsCount = "No friends yet";
                             int i = int.Parse(friendsCount, CultureInfo.InvariantCulture);
                             if (i == 1)
                             {
+                                // LOCALIZE:
                                 u.FriendsCount = "1 friend";
                             }
                             else if (i > 1)
                             {
+                                // LOCALIZE:
                                 u.FriendsCount = i.ToString(CultureInfo.InvariantCulture) + " friends";
                             }
                         }
-
-                        // TODO: V2: There is a new concept of friend groups.. hmm.
-                        /*
-                         "friends": {
-                    "count": 22,
-                    "groups": [
-                        {
-                            "type": "others",
-                            "name": "other friends",
-                            "count": 22,
-                            "items": [ ]
-                        }
-                    ]
-                },
-                         */
                     }
 
                     var requests = user["requests"];
@@ -872,6 +863,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                     //}
 
                     var badges = user["badges"];
+                    // LOCALIZE:
                     u.BadgeCountText = "No badges";
                     if (badges != null)
                     {
@@ -882,17 +874,20 @@ namespace JeffWilcox.FourthAndMayor.Model
                             if (badgeCount == 1)
                             {
                                 u.HasBadges = true;
+                                // LOCALIZE:
                                 u.BadgeCountText = "1 badge";
                             }
                             else
                             {
                                 u.HasBadges = true;
+                                // LOCALIZE:
                                 u.BadgeCountText = badgeCount + " badges";
                             }
                         }
                     }
 
                     var mayorships = user["mayorships"];
+                    // LOCALIZE:
                     u.MayorshipCountText = "No mayorships";
                     if (mayorships != null)
                     {
@@ -917,10 +912,12 @@ namespace JeffWilcox.FourthAndMayor.Model
                             }
                             else if (i == 1)
                             {
+                                // LOCALIZE:
                                 u.MayorshipCountText = "1 mayorship";
                             }
                             else
                             {
+                                // LOCALIZE:
                                 u.MayorshipCountText = i + " mayorships";
                             }
                         }
@@ -934,6 +931,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "The person's information could not be downloaded at this time, please try again later.", e);
                 }
             }

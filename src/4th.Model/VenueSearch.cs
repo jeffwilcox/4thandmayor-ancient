@@ -119,6 +119,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 catch (Exception e)
                 {
                     throw new UserIntendedException(
+                        // LOCALIZE:
                         "Your place search could not be completed at this time.", e);
                 }
             }

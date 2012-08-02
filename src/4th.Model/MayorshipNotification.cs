@@ -56,6 +56,8 @@ namespace JeffWilcox.FourthAndMayor.Model
                     // hardcoded for now
                     DaysBehindTheMayorText = string.Format(
                         CultureInfo.InvariantCulture,
+
+                        // LOCALIZE:
                         "You are now {0} day{1} away from becoming the Mayor!",
                         bh.ToString(),
                         bh < 2 ? "" : "s");
@@ -67,6 +69,7 @@ namespace JeffWilcox.FourthAndMayor.Model
 
                     if (bh == 1)
                     {
+                        // LOCALIZE:
                         ExtraText = "You must have a profile photo setup on foursquare.com to become the mayor.";
                     }
                 }

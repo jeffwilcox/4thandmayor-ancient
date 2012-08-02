@@ -105,6 +105,7 @@ namespace JeffWilcox.FourthAndMayor.Model
                 }
                 catch (Exception e)
                 {
+                    // LOCALIZE:
                     throw new UserIntendedException(
                         "The leaderboard could not be refreshed right now.", e);
                 }
