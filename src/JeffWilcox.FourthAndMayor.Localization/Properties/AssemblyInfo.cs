@@ -16,19 +16,22 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Resources;
 
-[assembly: AssemblyTitle("JeffWilcox.FourthAndMayor.Place")]
+[assembly: AssemblyTitle("JeffWilcox.FourthAndMayor.Localization")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jeff Wilcox")]
-[assembly: AssemblyProduct("JeffWilcox.FourthAndMayor.Place")]
-[assembly: AssemblyCopyright("Copyright © Jeff Wilcox 2011")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("JeffWilcox.FourthAndMayor.Localization")]
+[assembly: AssemblyCopyright("Copyright © Jeff Wilcox 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("012ad192-1120-4296-be6f-2a5e215ddb23")]
+[assembly: Guid("0e0b78ba-13f2-419c-8a33-b7002dac053e")]
 
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: NeutralResourcesLanguageAttribute("en-US")]

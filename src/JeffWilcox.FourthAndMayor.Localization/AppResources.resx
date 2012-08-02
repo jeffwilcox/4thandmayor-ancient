@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>add photo</value>
+    <comment>Action text for a button with 'add photo' on it</comment>
+  </data>
+  <data name="AdvancedCheckIn" xml:space="preserve">
+    <value>check-in...</value>
+    <comment>Action text for going to the detailed check-in page.</comment>
+  </data>
+  <data name="DownloadingPlaceInfo" xml:space="preserve">
+    <value>Downloading place info</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+    <comment>The name of Facebook</comment>
+  </data>
+  <data name="Friends" xml:space="preserve">
+    <value>Friends</value>
+    <comment>Capitalized version of 'Friends' - for sharing with them</comment>
+  </data>
+  <data name="HereNow" xml:space="preserve">
+    <value>here now</value>
+    <comment>Action text for linking to the people who are at this place right now</comment>
+  </data>
+  <data name="HowToEstablishMayorship" xml:space="preserve">
+    <value>If you would like to establish a mayorship, consider frequenting this place.</value>
+    <comment>Text describing how to get a mayorship by frequenting or checking in often to the place.</comment>
+  </data>
+  <data name="InformalEarlyMorning" xml:space="preserve">
+    <value>Early morning.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalGoodAfternoon" xml:space="preserve">
+    <value>Good afternoon.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalGoodEvening" xml:space="preserve">
+    <value>Good evening.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalGoodMorning" xml:space="preserve">
+    <value>Good morning.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalGoodNight" xml:space="preserve">
+    <value>Having a good night?</value>
+    <comment>Used while information is loading, randomly, an informal message referencing that it is late at night.</comment>
+  </data>
+  <data name="InformalGreetings" xml:space="preserve">
+    <value>Greetings.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalHello" xml:space="preserve">
+    <value>Hello.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalHey" xml:space="preserve">
+    <value>Hey.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalHi" xml:space="preserve">
+    <value>Hi.</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="InformalLoading" xml:space="preserve">
+    <value>Loading</value>
+    <comment>Used while information is loading, randomly, an informal message indicating that loading is happening.</comment>
+  </data>
+  <data name="InformalLunchtime" xml:space="preserve">
+    <value>Lunchtime!</value>
+    <comment>Used while information is loading, randomly, an informal message.</comment>
+  </data>
+  <data name="ListYouveBeenTo" xml:space="preserve">
+    <value>You've been to {0} of {1} places</value>
+  </data>
+  <data name="ListYouveBeenToSingular" xml:space="preserve">
+    <value>You've been to this place</value>
+    <comment>Non-plural version when there is only one place in the list.</comment>
+  </data>
+  <data name="LoadingExploring" xml:space="preserve">
+    <value>Exploring...</value>
+    <comment>Text to show while an 'exploring' option is going on.</comment>
+  </data>
+  <data name="LoadingToDos" xml:space="preserve">
+    <value>Loading to-do's</value>
+    <comment>Loading a list of "to-do"'s</comment>
+  </data>
+  <data name="LocationOptIn" xml:space="preserve">
+    <value>Location Opt-In</value>
+    <comment>Used for a header on the page to opt-in to location</comment>
+  </data>
+  <data name="NoMayor" xml:space="preserve">
+    <value>no mayor</value>
+    <comment>Indicates there is 'no mayor' at the current place, lowercase</comment>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+    <comment>For a page, pivot, or item where there are notifications about some action happening</comment>
+  </data>
+  <data name="OptionalShoutOut" xml:space="preserve">
+    <value>an optional shout out</value>
+    <comment>A watermark for a text box showing that you can optionally provide a "shout" about a place.</comment>
+  </data>
+  <data name="QuickCheckIn" xml:space="preserve">
+    <value>quick check-in</value>
+    <comment>Action text for the button to quickly check-in.</comment>
+  </data>
+  <data name="SeeAllNotifications" xml:space="preserve">
+    <value>See All Notifications</value>
+    <comment>Action text used to go to a page listing all notifications</comment>
+  </data>
+  <data name="SpecialHere" xml:space="preserve">
+    <value>special here</value>
+  </data>
+  <data name="SpecialNearby" xml:space="preserve">
+    <value>special nearby</value>
+  </data>
+  <data name="SpecialUnlocked" xml:space="preserve">
+    <value>special unlocked</value>
+  </data>
+  <data name="Stylized4thAndMayor" xml:space="preserve">
+    <value>4ᵀᴴ &amp; MAYOR</value>
+    <comment>The stylized text used in pivots and throughout the app for a capitalized version of the app name.</comment>
+  </data>
+  <data name="TouchToLearnMore" xml:space="preserve">
+    <value>touch to learn more</value>
+  </data>
+  <data name="TouchToSeeNearbySpecials" xml:space="preserve">
+    <value>touch to see nearby specials</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+    <comment>The name of Twitter</comment>
+  </data>
+  <data name="YourRecentNotifications" xml:space="preserve">
+    <value>Your Recent Notifications</value>
+    <comment>Text used before a list of your (personal) notifications</comment>
+  </data>
+  <data name="YourTodos" xml:space="preserve">
+    <value>your to-dos</value>
+  </data>
+</root>

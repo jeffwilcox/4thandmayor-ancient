@@ -14,21 +14,18 @@
 // limitations under the License.
 //
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+namespace JeffWilcox.FourthAndMayor
+{
+    public class LocalizedStrings
+    {
+        private static AppResources _localizedresources = new AppResources();
 
-[assembly: AssemblyTitle("JeffWilcox.FourthAndMayor.Place")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jeff Wilcox")]
-[assembly: AssemblyProduct("JeffWilcox.FourthAndMayor.Place")]
-[assembly: AssemblyCopyright("Copyright © Jeff Wilcox 2011")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-
-[assembly: Guid("012ad192-1120-4296-be6f-2a5e215ddb23")]
-
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
+        public AppResources Text 
+        { 
+            get 
+            { 
+                return _localizedresources; 
+            } 
+        }
+    }
+}

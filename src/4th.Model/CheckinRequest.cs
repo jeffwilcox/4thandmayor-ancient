@@ -47,35 +47,12 @@ namespace JeffWilcox.FourthAndMayor.Model
             return cr;
         }
 
-        public static CheckinRequest CheckinWithoutVenueId(string orphanVenueName, bool tweet, bool fb)
-        {
-            var cr = new CheckinRequest
-            {
-                OrphanVenueName = orphanVenueName,
-                Twitter = tweet,
-                Facebook = fb,
-            };
-            DataManager.Current.Clear<CheckinResponse>(cr);
-            return cr;
-        }
-
         public static CheckinRequest GoOffTheGrid(Venue venue)
         {
             var cr = new CheckinRequest
             {
                 ActualVenue = venue,
                 VenueId = venue.VenueId,
-                IsPrivate = true,
-            };
-            DataManager.Current.Clear<CheckinResponse>(cr);
-            return cr;
-        }
-
-        public static CheckinRequest GoOffTheGrid(string orphanVenueName)
-        {
-            var cr = new CheckinRequest
-            {
-                OrphanVenueName = orphanVenueName,
                 IsPrivate = true,
             };
             DataManager.Current.Clear<CheckinResponse>(cr);
@@ -96,12 +73,11 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         public override int GetHashCode()
         {
-            return (VenueId??"").GetHashCode() ^ (ShoutMessage??"").GetHashCode() ^ (OrphanVenueName??"").GetHashCode();
+            return (VenueId??"").GetHashCode() ^ (ShoutMessage??"").GetHashCode().GetHashCode();
         }
 
         public Venue ActualVenue { get; set; } // for refreshing!
         public string VenueId { get; set; }
-        public string OrphanVenueName { get; set; }
         public string ShoutMessage { get; set; } // max 140 char
         public bool Twitter { get; set; } // 1: send, 0: don't send
         public bool Facebook { get; set; } // 1: send, 0: don't send
@@ -112,7 +88,6 @@ namespace JeffWilcox.FourthAndMayor.Model
             Dictionary<string, string> p = new Dictionary<string, string>();
 
             p["venueId"] = VenueId;
-            p["venue"] = OrphanVenueName;
             p["shout"] = ShoutMessage;
 
             string b = "private";
