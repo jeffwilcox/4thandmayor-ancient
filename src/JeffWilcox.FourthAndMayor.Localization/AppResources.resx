@@ -227,6 +227,22 @@
     <value>See All Notifications</value>
     <comment>Action text used to go to a page listing all notifications</comment>
   </data>
+  <data name="ShareMail" xml:space="preserve">
+    <value>Mail</value>
+    <comment>Capitalized text for Mail in the share task.</comment>
+  </data>
+  <data name="ShareMessaging" xml:space="preserve">
+    <value>Messaging</value>
+    <comment>Capitalized text for Messaging in the Share task</comment>
+  </data>
+  <data name="ShareSocialNetwork" xml:space="preserve">
+    <value>Social Network</value>
+    <comment>Capitalized text for sharing using a social network status update in the Share Task.</comment>
+  </data>
+  <data name="ShareTaskTitle" xml:space="preserve">
+    <value>SHARE</value>
+    <comment>All-caps text for the share task page.</comment>
+  </data>
   <data name="SpecialHere" xml:space="preserve">
     <value>special here</value>
   </data>

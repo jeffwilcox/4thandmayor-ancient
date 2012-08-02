@@ -313,6 +313,42 @@ namespace JeffWilcox.FourthAndMayor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail.
+        /// </summary>
+        public static string ShareMail {
+            get {
+                return ResourceManager.GetString("ShareMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messaging.
+        /// </summary>
+        public static string ShareMessaging {
+            get {
+                return ResourceManager.GetString("ShareMessaging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Social Network.
+        /// </summary>
+        public static string ShareSocialNetwork {
+            get {
+                return ResourceManager.GetString("ShareSocialNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SHARE.
+        /// </summary>
+        public static string ShareTaskTitle {
+            get {
+                return ResourceManager.GetString("ShareTaskTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to special here.
         /// </summary>
         public static string SpecialHere {

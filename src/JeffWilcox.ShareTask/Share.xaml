@@ -37,7 +37,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="SHARE" Style="{StaticResource Normal}"/>
+            <TextBlock Text="{Binding Text.ShareTaskTitle, Source={StaticResource Localize}}" Style="{StaticResource Normal}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="12,0,12,0">
@@ -49,7 +49,7 @@
                     Margin="0,0,0,12">
                 <TextBlock
                     Style="{StaticResource Large}"
-                    Text="Mail"/>
+                    Text="{Binding Text.ShareMail, Source={StaticResource Localize}}"/>
                 </Button>
                 <Button
                     Template="{StaticResource NoButton}"
@@ -58,7 +58,7 @@
                     Margin="0,0,0,12">
                     <TextBlock
                         Style="{StaticResource Large}"
-                        Text="Messaging"/>
+                        Text="{Binding Text.ShareMessaging, Source={StaticResource Localize}}"/>
                 </Button>
                 <Button
                     Template="{StaticResource NoButton}"
@@ -67,7 +67,7 @@
                     Margin="0,0,0,12">
                     <TextBlock
                         Style="{StaticResource Large}"
-                        Text="Social Network"/>
+                        Text="{Binding Text.ShareSocialNetwork, Source={StaticResource Localize}}"/>
                 </Button>
             </StackPanel>
         </Grid>
