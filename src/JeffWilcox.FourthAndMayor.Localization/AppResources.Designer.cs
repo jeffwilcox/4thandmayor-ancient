@@ -39,7 +39,12 @@ namespace JeffWilcox.FourthAndMayor {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
+#if PSEUDOLOCALIZER_ENABLED
+                    global::System.Resources.ResourceManager temp =
+                        new Delay.PseudoLocalizerResourceManager("JeffWilcox.FourthAndMayor.AppResources", typeof(AppResources).Assembly);
+#else
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JeffWilcox.FourthAndMayor.AppResources", typeof(AppResources).Assembly);
+#endif
                     resourceMan = temp;
                 }
                 return resourceMan;

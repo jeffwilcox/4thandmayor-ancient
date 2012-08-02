@@ -145,6 +145,9 @@
     <value>Friends</value>
     <comment>Capitalized version of 'Friends' - for sharing with them</comment>
   </data>
+  <data name="Group_Badge_Name" xml:space="preserve">
+    <value>Badges</value>
+  </data>
   <data name="HereNow" xml:space="preserve">
     <value>here now</value>
     <comment>Action text for linking to the people who are at this place right now</comment>
