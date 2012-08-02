@@ -300,50 +300,6 @@ namespace JeffWilcox.FourthAndMayor
                 });
         }
 
-        //public void Search(string terms, Action<VenueSearch> success, Action<Exception> error)
-        //{
-        //    if (LocalCredentials.Current != null && string.IsNullOrEmpty(LocalCredentials.Current.UserId))
-        //    {
-        //        throw new UserIgnoreException();
-        //    }
-
-        //    var uuri = FourSquareWebClient.BuildFourSquareUri(
-        //            "venues/search",
-        //            GeoMethodType.Required, // req or opt?
-
-        //            "query",
-        //            terms,
-
-        //            "intent",
-        //            "checkin");
-        //    var r = new FourSquareServiceRequest
-        //    {
-        //        Uri = uuri.Uri,
-        //    };
-
-        //    r.CallAsync(
-        //        (str, ex) =>
-        //        {
-        //            Exception exx = ex;
-
-        //            try
-        //            {
-        //                var json = FourSquareDataLoaderBase<LoadContext>.ProcessMetaAndNotificationsReturnJson(str);
-        //                var response = VenueSearch.ParseJson(json);
-        //                success(response);
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                exx = e;
-        //            }
-
-        //            if (exx != null)
-        //            {
-        //                error(exx);
-        //            }
-        //        });
-        //}
-
         public enum ToDoState
         {
             MarkToDo,
