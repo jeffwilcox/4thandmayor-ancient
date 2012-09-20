@@ -64,11 +64,12 @@ namespace JeffWilcox.FourthAndMayor.Model
 
         private Uri ComposeUri(int size)
         {
-            return new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}",
+            var uri = new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}{2}",
                 _prefix,
                 size,
                 _name
                 ), UriKind.Absolute);
+            return uri;
         }
 
         public static MultiResolutionImage ParseJson(JToken json)
@@ -76,7 +77,13 @@ namespace JeffWilcox.FourthAndMayor.Model
             MultiResolutionImage mri = new MultiResolutionImage();
 
             mri._prefix = Json.TryGetJsonProperty(json, "prefix");
+
             mri._name = Json.TryGetJsonProperty(json, "name");
+            // Fix for latest Foursquare API, was a breaking change.
+            if (mri._name == null)
+            {
+                mri._name = Json.TryGetJsonProperty(json, "suffix");
+            }
 
             var sizes = json["sizes"];
             List<int> sz = new List<int>();
@@ -87,6 +94,16 @@ namespace JeffWilcox.FourthAndMayor.Model
                     sz.Add(size);
                 }
             }
+
+            if (sz.Count == 0)
+            {
+                // Category sizes: https://developer.foursquare.com/docs/responses/category.html 
+                sz.Add(32);
+                sz.Add(44);
+                sz.Add(64);
+                sz.Add(88);
+            }
+
             mri._sizes = sz;
 
             return mri;
