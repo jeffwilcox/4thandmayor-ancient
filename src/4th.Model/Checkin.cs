@@ -72,6 +72,9 @@ namespace JeffWilcox.FourthAndMayor.Model
         public string DisplayAddressLine { get; set; }
         public string CheckinType { get; set; }
 
+        public bool IsLiked { get; set; }
+        public string LikedSummary { get; set; }
+
         public int PhotosCount { get; set; }
         public int CommentsCount { get; set; }
         public string CommentsAndPhotosOrAdd { get; set; }
@@ -315,6 +318,13 @@ namespace JeffWilcox.FourthAndMayor.Model
             c.HasComments = c.CommentsCount > 0;
             c.HasPhotos = c.PhotosCount > 0;
             c.HasPhotosOrComments = c.HasComments || c.HasPhotos;
+
+            c.IsLiked = Json.TryGetJsonBool(checkin, "like");
+            var likes = checkin["likes"];
+            if (likes != null)
+            {
+                c.LikedSummary = Json.TryGetJsonProperty(likes, "summary");
+            }
 
             if (c.HasPhotos)
             {

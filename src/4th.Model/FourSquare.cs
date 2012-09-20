@@ -50,6 +50,53 @@ namespace JeffWilcox.FourthAndMayor
             Deny,
         }
 
+        public void LikeUnlikeCheckin(
+            string checkinId,
+            bool likeYesNo,
+            Action success, 
+            Action<Exception> failure)
+        {
+            var client = (new FourSquareWebClient()).GetWrappedClientTemporary();
+            var uuri = FourSquareWebClient.BuildFourSquareUri(
+                "checkins/" + checkinId + "/like",
+                GeoMethodType.None,
+                "set",
+                likeYesNo ? "1" : "0");
+            var uri = uuri.Uri;
+            var newUri = FourSquareWebClient.CreateServiceRequest(uri, true);
+            client.UploadStringCompleted += (x, xe) =>
+            {
+                Exception e = null;
+                if (xe.Error != null)
+                {
+                    e = xe.Error;
+                }
+                else
+                {
+                    string rs = xe.Result;
+                    try
+                    {
+                        var json = FourSquareDataLoaderBase<LoadContext>.ProcessMetaAndNotificationsReturnJson(rs);
+                    }
+                    catch (Exception ee)
+                    {
+                        // LOCALIZE:
+                        e = new UserIntendedException("There was a problem liking or unliking the checkin, please try again later.", ee);
+                    }
+                }
+                client = null;
+
+                if (e != null)
+                    failure(e);
+                else
+                    success();
+            };
+
+            // POST request.
+            client.UploadStringAsync(newUri, string.Empty);
+            //client.DownloadStringAsyncWithPost(newUri, string.Empty);
+        }
+
         public void SetFriendRelationship(
             string userId, 
             RelationshipAction newRelationship, 
