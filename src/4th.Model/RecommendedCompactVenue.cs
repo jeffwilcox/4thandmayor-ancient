@@ -59,6 +59,10 @@ namespace JeffWilcox.FourthAndMayor.Model
                     {
                         string sType = Json.TryGetJsonProperty(item, "type");
                         string sMessage = Json.TryGetJsonProperty(item, "message");
+                        if (string.IsNullOrEmpty(sMessage))
+                        {
+                            sMessage = Json.TryGetJsonProperty(item, "summary");
+                        }
                         reasonList.Add(new RecommendationReason
                                            {
                                                Reason = sType,
