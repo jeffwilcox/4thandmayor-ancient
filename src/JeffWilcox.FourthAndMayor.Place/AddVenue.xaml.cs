@@ -40,9 +40,20 @@ namespace JeffWilcox.FourthAndMayor.Views
 
         public Model.Categories Categories { get; private set; }
 
+        private static bool DuringInstanceWarned = false;
+
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            if (!DuringInstanceWarned)
+            {
+                DuringInstanceWarned = true;
+                PriorityQueue.AddUiWorkItem(() =>
+                    {
+                        MessageBox.Show("Adding places and venues is often broken in the application due to new requirements by foursquare. This hopefully will be fixed in 4.0 - though you may continue trying to add right now, too.");
+                    });
+            }
 
             ChromeSystemTray.SetSystemTrayToChrome();
 
