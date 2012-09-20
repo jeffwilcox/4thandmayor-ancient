@@ -122,6 +122,7 @@ namespace JeffWilcox.FourthAndMayor.Model
             }
 
             // new Foursquare (august 2012)
+            // https://developer.foursquare.com/docs/responses/photo.html
             if (sizes == null && primaryUri == null)
             {
                 string prefix = Json.TryGetJsonProperty(json, "prefix");
@@ -129,6 +130,9 @@ namespace JeffWilcox.FourthAndMayor.Model
                 if (prefix != null && suffix != null)
                 {
                     p.Uri = new Uri(prefix + "original" + suffix, UriKind.Absolute);
+                    p.SmallestUri = new Uri(prefix + "100x100" + suffix, UriKind.Absolute); // or could be 36x36
+                    p.MediumUri = new Uri(prefix + "300x300" + suffix, UriKind.Absolute);
+                    p.LargerUri = new Uri(prefix + "500x500" + suffix, UriKind.Absolute);
                 }
                 else
                 {
