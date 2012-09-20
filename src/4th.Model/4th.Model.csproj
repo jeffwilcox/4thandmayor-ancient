@@ -73,6 +73,7 @@
     <Compile Include="CompactVenueList.cs" />
     <Compile Include="DetailedCheckin.cs" />
     <Compile Include="DetailedTip.cs" />
+    <Compile Include="EarthGrid.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="ExploreVenues.cs" />
     <Compile Include="ExploreVenuesLoadContext.cs" />

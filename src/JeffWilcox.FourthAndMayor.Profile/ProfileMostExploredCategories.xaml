@@ -54,23 +54,15 @@
                                         <Grid
                 Margin="0,6,0,0"
                 Grid.RowSpan="2"
+                                            Width="64"
+                                            Height="64"
+                                            Background="{StaticResource PhoneAccentBrush}"
                 VerticalAlignment="Top">
                                             <Image
                     Width="64"
                     Height="64"
-                    Source="/Images/unknown.png"
                     Stretch="None"
                     jw:AwesomeImage.UriSource="{Binding Category.MediumIconSize}" />
-                                            <Rectangle
-                    Width="64"
-                    Height="64"
-                    Stroke="#58595B"
-                    StrokeThickness="5" />
-                                            <Rectangle
-                    Width="56"
-                    Height="56"
-                    Stroke="#FFFFFF"
-                    StrokeThickness="3" />
                                         </Grid>
                                         <TextBlock
                                         Style="{StaticResource PhoneTextLargeStyle}"
