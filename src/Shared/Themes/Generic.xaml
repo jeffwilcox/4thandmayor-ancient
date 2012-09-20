@@ -948,7 +948,7 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Grid x:Name="OverlayGrid"/><!-- VerticalAlignment="Top" -->
-                        <Image x:Name="AnalyticsImage" VerticalAlignment="Top" Opacity="0"/>
+                        <Image x:Name="AnalyticsImage" VerticalAlignment="Top" Opacity="0" IsHitTestVisible="False"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
