@@ -875,6 +875,28 @@ namespace JeffWilcox.FourthAndMayor
                             var json = FourSquareDataLoaderBase<LoadContext>.ProcessMetaAndNotificationsReturnJson(str, request.VenueId);
                             var response = CheckinResponse.ParseJson(json);
 
+                            var jNotif = json["notifications"];
+                            if (jNotif != null)
+                            {
+                                // What's new UI (relocated)
+                                Notifications notifications = Notifications.ParseJson(jNotif, request.VenueId, request);
+                                if (notifications.Count > 0)
+                                {
+                                    PriorityQueue.AddUiWorkItem(() =>
+                                        {
+                                            var app = Application.Current as IProcessNotifications;
+                                            //var optionalCheckinRequest = FourSquare.Instance.MostRecentCheckinRequest;
+                                            //FourSquare.Instance.MostRecentCheckinRequest = null;
+                                            //((IProcessNotifications)app).ProcessNotifications(notifications, venueId, optionalCheckinRequest);
+                                            ((IProcessNotifications)app).ShowNotifications(notifications);
+                                        });
+                                }
+                                else
+                                {
+                                    // !!!
+                                }
+                            }
+
                             success(response);
 
                                         var ias = Application.Current as IAnalyticsSettings;

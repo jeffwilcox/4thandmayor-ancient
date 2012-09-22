@@ -14,6 +14,7 @@
 // limitations under the License.
 //
 
+using JeffWilcox.FourthAndMayor.Model;
 using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.Controls
@@ -21,5 +22,6 @@ namespace JeffWilcox.Controls
     public interface IProcessNotifications
     {
         void ProcessNotifications(JToken notif, string optionalVenueId, JeffWilcox.FourthAndMayor.Model.CheckinRequest optionalCheckinRequest);
+        void ShowNotifications(Notifications notifications);
     }
 }

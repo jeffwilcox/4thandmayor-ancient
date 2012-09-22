@@ -45,7 +45,7 @@
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Newtonsoft.Json.Silverlight">
-      <HintPath>..\Newtonsoft.Json.Silverlight.dll</HintPath>
+      <HintPath>..\..\..\..\..\fspp\Newtonsoft.Json.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="system" />
     <Reference Include="System.Device" />
