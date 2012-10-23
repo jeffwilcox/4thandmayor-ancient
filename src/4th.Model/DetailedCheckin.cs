@@ -48,6 +48,17 @@ namespace JeffWilcox.FourthAndMayor.Model
             }
         }
 
+        private ScoreNotification _score;
+        public ScoreNotification Score 
+        {
+            get { return _score; }
+            set
+            {
+                _score = value;
+                RaisePropertyChanged("Score");
+            }
+        }
+
         private Checkin _checkin;
         public Checkin CompactCheckin
         {
@@ -94,6 +105,16 @@ namespace JeffWilcox.FourthAndMayor.Model
                         }
 
                         u.CompactCheckin = compactCheckin;
+
+                        var score = jcheckin["score"];
+                        if (score != null)
+                        {
+                            ScoreNotification s = new ScoreNotification(score);
+                            if (s != null)
+                            {
+                                u.Score = s;
+                            }
+                        }
 
                         List<Photo> photos = new List<Photo>();
                         var pl = jcheckin["photos"];
