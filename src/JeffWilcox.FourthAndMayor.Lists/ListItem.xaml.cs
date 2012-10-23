@@ -26,7 +26,6 @@ namespace JeffWilcox.FourthAndMayor.Lists
 {
     public partial class ListItem : 
         PhoneApplicationPage, 
-        ITransitionCompleted,
         INotifyPropertyChanged
     {
         public ListItem()
@@ -205,12 +204,12 @@ System.NullReferenceException
             base.OnNavigatedFrom(e);
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

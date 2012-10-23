@@ -23,8 +23,7 @@ using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.Lists
 {
-    public partial class ListView : PhoneApplicationPage,
-        ITransitionCompleted
+    public partial class ListView : PhoneApplicationPage
     {
         private Model.List _list;
         private string _id;
@@ -64,12 +63,12 @@ namespace JeffWilcox.FourthAndMayor.Lists
             base.OnNavigatedFrom(e);
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

@@ -28,7 +28,7 @@ using Microsoft.Phone.Tasks;
 
 namespace Maps
 {
-    public partial class MapView : PhoneApplicationPage, ITransitionCompleted
+    public partial class MapView : PhoneApplicationPage
     {
         public MapView()
         {
@@ -38,12 +38,12 @@ namespace Maps
             _map.Children.Add(_layer);
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             SetupAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

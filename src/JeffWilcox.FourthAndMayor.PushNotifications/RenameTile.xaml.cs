@@ -23,8 +23,7 @@ using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.PushNotifications
 {
-    public partial class RenameTile : PhoneApplicationPage,
-        ITransitionCompleted
+    public partial class RenameTile : PhoneApplicationPage
     {
         public static string TitleReturnValue { get; set; }
         public static Uri TileUri { get; set; }
@@ -121,12 +120,12 @@ namespace JeffWilcox.FourthAndMayor.PushNotifications
             }
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

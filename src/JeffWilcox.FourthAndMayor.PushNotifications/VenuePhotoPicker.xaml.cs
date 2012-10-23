@@ -26,8 +26,7 @@ using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.PushNotifications
 {
-    public partial class VenuePhotoPicker : PhoneApplicationPage,
-        ITransitionCompleted
+    public partial class VenuePhotoPicker : PhoneApplicationPage
     {
         private Model.Venue _venue;
         private string _venueId;
@@ -135,12 +134,12 @@ namespace JeffWilcox.FourthAndMayor.PushNotifications
             }
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

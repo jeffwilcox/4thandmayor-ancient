@@ -137,6 +137,10 @@
   <data name="DownloadingPlaceInfo" xml:space="preserve">
     <value>Downloading place info</value>
   </data>
+  <data name="EnglishOnly" xml:space="preserve">
+    <value>The following information is in the English language:</value>
+    <comment>Text letting the user know to expect English text to follow where content or information is not localized.</comment>
+  </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
     <comment>The name of Facebook</comment>

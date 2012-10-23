@@ -60,7 +60,18 @@ namespace JeffWilcox.FourthAndMayor.Model
             {
                 // new clients
                 Exception ex = down != null ? down.Error : up.Error;
-                string str = down != null ? down.Result : up.Result;
+                string str = null;
+                if (ex == null)
+                {
+                    try
+                    {
+                        str = down != null ? down.Result : up.Result;
+                    }
+                    catch (Exception exp)
+                    {
+                        ex = exp;
+                    }
+                }
 
                 if (cb != null)
                 {
@@ -75,7 +86,20 @@ namespace JeffWilcox.FourthAndMayor.Model
                 {
                     if (cb != null)
                     {
-                        cb(legacy.Result, legacy.Error);
+                        Exception ex = legacy.Error;
+                        string res = null;
+                        if (ex == null)
+                        {
+                            try
+                            {
+                                res = legacy.Result;
+                            }
+                            catch (Exception expp)
+                            {
+                                ex = expp;
+                            }
+                        }
+                        cb(res, ex);
                     }
                 }
                 else

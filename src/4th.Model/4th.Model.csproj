@@ -52,6 +52,51 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\AppModel\LoadStatus.cs">
+      <Link>Prototype\LoadStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\FoursquareDataLoaderBase.cs">
+      <Link>Prototype\FoursquareDataLoaderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\FoursquareItemBase.cs">
+      <Link>Prototype\FoursquareItemBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\FoursquareLoadRequest.cs">
+      <Link>Prototype\FoursquareLoadRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\HttpMethod.cs">
+      <Link>Prototype\HttpMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\HttpStatusCode.cs">
+      <Link>Prototype\HttpStatusCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\NameValueCollection.cs">
+      <Link>Prototype\NameValueCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\ResourceContext.cs">
+      <Link>Prototype\ResourceContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\ResponseStatus.cs">
+      <Link>Prototype\ResponseStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\RestClient.cs">
+      <Link>Prototype\RestClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\RestRequest.cs">
+      <Link>Prototype\RestRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\RestResponse.cs">
+      <Link>Prototype\RestResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\WebPair.cs">
+      <Link>Prototype\WebPair.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\WebPairCollection.cs">
+      <Link>Prototype\WebPairCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\w8.4thandmayor\JeffWilcox.FourthAndMayor\Services\WebParameter.cs">
+      <Link>Prototype\WebParameter.cs</Link>
+    </Compile>
     <Compile Include="AppTileManager.cs" />
     <Compile Include="AppTileSettings.cs" />
     <Compile Include="Badge.cs" />
@@ -64,6 +109,7 @@
     <Compile Include="CheckinResponse.cs" />
     <Compile Include="Checkins.cs" />
     <Compile Include="CheckinsGroup.cs" />
+    <Compile Include="CivicAddress.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="CompactList.cs" />
     <Compile Include="CompactListItem.cs" />
@@ -88,6 +134,7 @@
     <Compile Include="FriendStatus.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="GeoMethodType.cs" />
+    <Compile Include="HttpClient.cs" />
     <Compile Include="IExposeAppSettings.cs" />
     <Compile Include="IFoursquareApiVersion.cs" />
     <Compile Include="IGenerate4thAndMayorUri.cs" />
@@ -178,6 +225,10 @@
     <Compile Include="VenueSearchLoadContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\fspp\Toolkit2012\Microsoft.Phone.Controls.Toolkit.WP7\Microsoft.Phone.Controls.Toolkit.WP7.csproj">
+      <Project>{0754458A-7AFC-463A-B27D-2F6980522119}</Project>
+      <Name>Microsoft.Phone.Controls.Toolkit.WP7</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\AgFx\AgFx\AgFx.csproj">
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>

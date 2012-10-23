@@ -29,7 +29,7 @@ using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.FriendsMap
 {
-    public partial class NearbyFriendsMap : PhoneApplicationPage, ITransitionCompleted
+    public partial class NearbyFriendsMap : PhoneApplicationPage
     {
         public NearbyFriendsMap()
         {
@@ -389,12 +389,12 @@ namespace JeffWilcox.FourthAndMayor.FriendsMap
             }
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             SetupAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

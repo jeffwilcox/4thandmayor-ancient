@@ -136,6 +136,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\fspp\Toolkit2012\Microsoft.Phone.Controls.Toolkit.WP7\Microsoft.Phone.Controls.Toolkit.WP7.csproj">
+      <Project>{0754458A-7AFC-463A-B27D-2F6980522119}</Project>
+      <Name>Microsoft.Phone.Controls.Toolkit.WP7</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\AgFx\AgFx\AgFx.csproj">
       <Project>{3ED37B15-A664-4E31-ABD3-CD3522B35E27}</Project>
       <Name>AgFx</Name>
@@ -151,10 +155,6 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
       <Name>Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tk\Tk.csproj">
-      <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
-      <Name>Tk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

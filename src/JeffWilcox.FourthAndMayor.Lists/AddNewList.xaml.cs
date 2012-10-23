@@ -23,19 +23,19 @@ using Microsoft.Phone.Shell;
 
 namespace JeffWilcox.FourthAndMayor.Lists
 {
-    public partial class AddNewList : PhoneApplicationPage, ITransitionCompleted
+    public partial class AddNewList : PhoneApplicationPage
     {
         public AddNewList()
         {
             InitializeComponent();
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }

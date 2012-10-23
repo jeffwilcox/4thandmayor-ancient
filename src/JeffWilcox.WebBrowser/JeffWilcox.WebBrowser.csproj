@@ -70,10 +70,6 @@
       <Project>{3D1C269C-5C75-49BA-A7AA-5A94949CDCAE}</Project>
       <Name>Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tk\Tk.csproj">
-      <Project>{85FA8F21-3A75-4688-8DDB-18D999A52601}</Project>
-      <Name>Tk</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

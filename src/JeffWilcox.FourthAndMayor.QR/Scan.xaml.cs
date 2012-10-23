@@ -24,7 +24,7 @@ using Microsoft.Phone.Tasks;
 
 namespace JeffWilcox.FourthAndMayor.QR
 {
-    public partial class Scan : PhoneApplicationPage, ITransitionCompleted
+    public partial class Scan : PhoneApplicationPage
     {
         public Scan()
         {
@@ -50,12 +50,12 @@ namespace JeffWilcox.FourthAndMayor.QR
 
         private string _lastCode;
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBars();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
 

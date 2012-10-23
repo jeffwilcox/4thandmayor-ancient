@@ -27,8 +27,7 @@ using Microsoft.Phone.Shell;
 namespace JeffWilcox.FourthAndMayor.Lists
 {
     public partial class SaveToList :
-        PhoneApplicationPage, 
-        ITransitionCompleted
+        PhoneApplicationPage
     {
         public SaveToList()
         {
@@ -255,12 +254,12 @@ namespace JeffWilcox.FourthAndMayor.Lists
             // ?
         }
 
-        public void OnTransitionCompleted()
+        public void OnTransitionTo()
         {
             UpdateAppBar();
         }
 
-        public void OnTransitionGoodbyeTemporary()
+        public void OnTransitionFrom()
         {
             ApplicationBar = null;
         }
