@@ -21,6 +21,7 @@ using System.Windows;
 using AgFx;
 using JeffWilcox.Controls;
 using JeffWilcox.FourthAndMayor.Model;
+using Newtonsoft.Json.Linq;
 
 namespace JeffWilcox.FourthAndMayor
 {
@@ -875,9 +876,31 @@ namespace JeffWilcox.FourthAndMayor
                             var json = FourSquareDataLoaderBase<LoadContext>.ProcessMetaAndNotificationsReturnJson(str, request.VenueId);
                             var response = CheckinResponse.ParseJson(json);
 
+                            JToken score = null;
+
+                            var checkin = json["checkin"];
+                            if (checkin != null)
+                            {
+                                 score = checkin["score"];
+                            }
+
                             var jNotif = json["notifications"];
                             if (jNotif != null)
                             {
+                                // Add the score notification (simulates old behavior of foursquare)
+                                if (score != null)
+                                {
+                                    JObject scoreNotification = new JObject(
+                                        new JProperty("type", "score"),
+                                        new JProperty("item",
+                                            score));
+                                    JArray ja = jNotif as JArray;
+                                    if (ja != null)
+                                    {
+                                        ja.Add(scoreNotification);
+                                    }
+                                }
+
                                 // What's new UI (relocated)
                                 Notifications notifications = Notifications.ParseJson(jNotif, request.VenueId, request);
                                 if (notifications.Count > 0)
