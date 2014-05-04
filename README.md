@@ -1,3 +1,5 @@
+> This code is so old, essentially from the Windows Phone 7.0 release, that you should run away!
+
 4th & Mayor
 ===========
 
